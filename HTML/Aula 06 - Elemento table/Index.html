@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ptbr">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Elemento table</title>
+    </head>
+
+    <body>
+        <header>
+            <h1>Elemento table</h1>
+        </header>
+
+        <article>
+           
+
+            <table border="1">
+                <!-- <caption> Legenda da tabela -->
+                <caption>Dinheiro poupado em 2020</caption>
+                
+                <!-- <thead> Cabeçario da tabela -->
+                <thead>
+                    <tr>
+                        <th>Mes</th>
+                        <th>Poupança</th>
+                        <th>Poupado p/ aniversário!</th>
+                    </tr>
+                </thead>
+
+                <!-- <tbody> Conteúdo da tabela -->
+                <tbody>
+                    <tr>
+                        <td>Janeiro</td>
+                        <td>R$100</td>
+                        <!-- rowspan="" Mescla linhas -->
+                        <td rowspan="2">R$50</td>
+                    </tr>
+
+                    <tr>
+                        <td>Fevereiro</td>
+                        <td>R$80</td>
+                    </tr>
+
+                    <tr>
+                        <td>Março</td>
+                        <td>R$90</td>
+                        <td>R$10</td>
+                    </tr>
+                </tbody>
+
+                <!-- <tfoot> Rodapé da tabela -->
+                <tfoot>
+                    <tr>
+                        <!-- colspan="" Mescla colunas -->
+                        <td colspan="3">Soma : R$330</td>
+                    </tr>
+                </tfoot>
+            </table>
+
+            <!-- <br> pula uma linha -->
+            <br>
+        </article>
+
+        <footer>
+            <small>Instituto da Oportunidade Social</small>
+        </footer>
+    </body>
+
+</html>

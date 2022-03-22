@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Aula 07</title>
+    </head>
+
+    <body>
+        <header>
+            <!-- form = formulário -->
+            <h1>Elemento Form</h1>
+            <nav>
+                <h2>Elementos de formulário</h2>
+                <ul>
+                    <li><a href="#">input e label</a></li>
+                    <li><a href="#">Tipos checkbox e radio</a></li>
+                    <li><a href="#">select e datalist</a></li>
+                    <li><a href="#">textarea</a></li>
+                    <li><a href="#">Marcação fieldset e legend</a></li>
+                    <li><a href="#">Atributo action do elemento form e elemento output</a></li>
+                </ul>
+            </nav>    
+        </header>
+
+        <main>
+            <p>Estou aprendendo sobre código em html para criação sites, estou gostando de criar meus próprios códigos e até o momento não sinto que tenho dificuldade em aprender nada nem tenho algo que não esteja gostando sobre.</p>
+
+            <form action="" name="Churrasco">
+                <label for="cTipoCarne">Tipos de carne</label><br>
+                <input required type="text" name="Quero inserir uma informação sobre churrasco" size="30" maxlength="10" id="cTipoCarne">
+
+                <input type="submit" name="Enviar">           
+
+            <!-- radio -->           
+                <p>Qual sua cor favorita?</p>
+                
+                <label for="cAmarelo">Amarelo</label>
+                <input type="radio" name="FavCol" id="cAmarelo"><br>
+
+                <label for="cVermelho">Vermelho</label>
+                <input type="radio" name="FavCol" id="cVermelho"><br>
+
+                <label for="cAzul">Azul</label>
+                <input type="radio" name="FavCol" id="cAzul"><br>
+
+                <label for="cVerde">Verde</label>
+                <input type="radio" name="FavCol" id="cVerde"><br>
+
+                <label for="cRoxo">Roxo</label>
+                <input type="radio" name="FavCol" id="cRoxo"><br>           
+
+            <!-- Checkbox -->            
+                <p>Qual desses jogos você ja jogou?</p>
+
+                <label for="pLOL">League of Legends</label>
+                <input type="checkbox" name="pGame" id="pLOL" value="LeagueOfLegends"><br>
+
+                <label for="pMine">Minecraft</label>
+                <input type="checkbox" name="pGame" id="pMine" value="Minecraft"><br>
+
+                <label for="pTerr">Terraria</label>
+                <input type="checkbox" name="pGame" id="pTerr" value="Terraria"><br>
+
+                <label for="pVal">Valorant</label>
+                <input type="checkbox" name="pGame" id="pVal" value="Valorant"><br>
+
+                <label for="pGOW">God of War</label>
+                <input type="checkbox" name="pGame" id="pGOW" value="GodOfWar"><br>
+
+                <label for="pGOD">Geometry Dash</label>
+                <input type="checkbox" name="pGame" id="pGOD" value="GeometryDash">
+                <br>
+
+            <!-- Select lista suspensa -->
+                <label for="melhorTime">Qual o melhor time</label><br>
+                <select name="time" id="melhorTime">
+                    <option value="saoPaulo">São Paulo</option>
+                    <option value="palmeiras">Palmeiras</option>
+                    <option value="corinthians">Corinthians</option>
+                    <option value="santos">Santos</option>
+                </select>
+
+            <!-- Datalist lista pré-definida -->            
+                <br>
+                <label for="Cidade">Selecione sua cidade</label><br>
+                <input list="Cidade" name="tCid" id="cCid" placeholder="Cidade">
+                <datalist id="Cidade">
+                    <option>São Paulo</option>
+                    <option>Campinas</option>
+                    <option>Santos</option>
+                    <option>Santo André</option>
+                </datalist>
+
+            <!-- Range -->            
+                <br>
+                <label for="nSat">Nível de Satisfação</label><br>
+                1
+                <input type="range" value="6" list="nSat" min="1" max="10">
+                10
+                <datalist id="nSat">
+                    <option value="1"></option>
+                    <option value="2"></option>
+                    <option value="3"></option>
+                    <option value="4"></option>
+                    <option value="5"></option>
+                    <option value="6"></option>
+                    <option value="7"></option>
+                    <option value="8"></option>
+                    <option value="9"></option>
+                    <option value="10"></option>
+                </datalist>           
+
+            <!-- textarea -->           
+                <br>
+                <label for="gOpn">O que podemos melhorar?</label><br>
+                <textarea cols="50" rows="10" name="Opiniao" id="gOpn" placeholder="Nos dê seu feedback"></textarea>
+                    
+                <br>
+                <input type="submit" name="Enviar" id="submit">
+            </form>
+        </main>
+
+        <footer>
+            <br>
+            <small>&copy;Instituto da Oportunidade Social</small>
+        </footer>
+    </body>
+
+</html>
