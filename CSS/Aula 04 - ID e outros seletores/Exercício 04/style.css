@@ -1,41 +1,50 @@
 @charset "utf-8";
 *{
-    background-color: #474747;
-    color: azure;
+    background-color: #11051b;
+    color: #ffb238;
 }
 
-header h1{
-    font-size: 250px;
-    font-weight: 800;
-    font-style: italic;
+header nav p{
     text-align: center;
 }
 
-#font1{
-    font-family: 'Inspiration', cursive;
-    font-size: 25px;
-    background-color: #cc527a;
+a#navHeader{
+    color:#b90041;
 }
 
-#font2{
-    font-family: 'Bebas Neue', cursive;
-    font-size: 25px;
-    background-color: #a8a7a7;
+img#icon{
+    float: left, top;
 }
 
-#font3{
-    font-family: 'Shadows Into Light', cursive;
-    font-size: 25px;
-    background-color: #363636;
+.table{
+    background-color: #49007e;
+    text-align: center;
+    font-family: 'Grape Nuts', cursive;
 }
 
-small{
-    font-style: italic;
+.title{
+    font-weight: 600;
+    color: rgb(0, 155, 0);
+    text-align: center;
+}
+
+#contact{
     text-align: left;
 }
 
-img#displayed{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+#copy{
+    text-align: center;
+    background-color: #49007e;
+}
+
+tr#tabletitle{
+    font-weight: 600;
+}
+
+th#tcolor{
+    background-color: #003a91;
+}
+
+td{
+    background-color: #0d0b0f;
 }
