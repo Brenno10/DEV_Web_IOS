@@ -1,0 +1,27 @@
+@charset "utf-8";
+body {
+    font-family: 'Jost', sans-serif;
+}
+
+#bh .img1{
+    width: 50%;
+    float: left;
+}
+
+#bh2 .par {
+    clear: none;
+}
+
+#bh2 {
+    margin-top: 30%;
+}
+
+#bh2 .img2 {
+    width: 40%;
+    float: left;
+}
+
+#bh2 .img3 {
+    width: 17%;
+    float: right;
+}
