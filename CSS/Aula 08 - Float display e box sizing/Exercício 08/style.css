@@ -1,12 +1,114 @@
 @charset "utf-8";
-body {
+* {
     font-family: 'Jost', sans-serif;
+    color: aliceblue;
+    margin: 0;
 }
 
-.container {
-    
+body {
+    background-image: url(velozesbg.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
 }
 
-#head a {
+#icon {
+    width: 15%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2.5%;
+    display: block;
+    float: none;
+}
+
+header {
+    margin: 3vh;
+}
+
+header nav a{
+    margin: 1vh;
+    border: black 2px solid;
+    border-radius: 10px;
+    padding: 1vh;
+    background-color: rgba(0, 0, 0, 0.7);
     text-decoration: none;
+}
+
+.container main{
+    margin: 2vh;
+    padding: 2em;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+main .row {
+    padding: 2vh;
+    padding-bottom: 25vh;
+    margin: 2vh;
+    border: black 2px solid;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+main #content .row figure img
+{
+    height: 400px;
+}
+
+main #content .row figure figcaption
+{
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #ddd;
+    font-style: italic;
+}
+
+main #content .row figure img
+{
+    height: 400px;
+}
+
+main #content em
+{
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+main #content .left
+{
+    float: left;
+}
+
+main #content .right
+{
+    float: right;
+}
+
+main #content .clear {
+    clear: none;
+}
+
+footer {
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+footer p {
+    text-align: center;
+    font-size: 0.75em;
+    padding-top: 3vh;
+    padding-bottom: 3vh;
+}
+
+body::-webkit-scrollbar {
+    width: 10px;                                  /* tamanho total da barra de rolagem */
+}
+  
+body::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0);         /* cor do backgorund da barra de rolagem */
+}
+  
+body::-webkit-scrollbar-thumb {
+    background-color: rgb(160, 160, 160);       /* cor da barra de rolagem */
+    border-radius: 10px;                          /* circunferencia da barra de rolagem */
+    border: 3px solid rgba(0, 0, 0, 0);         /* cria borda na barra de rolagem */
 }
