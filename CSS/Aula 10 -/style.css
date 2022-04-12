@@ -48,13 +48,14 @@ h1 {
     background-color: #4caf50;
     border: none;
     color: #fff;
-    padding: 10px 15px;
+    padding: 10px 15px;             /* quando tem apenas 2 elementos, eles fazem o padding de top+bottom e left+right */
     text-align: center;
     text-decoration: none;
     font-size: 18px;
 }
 
 /* modifica a forma do site dependendo do tamanho da tela */
+/* max-width especifica qual to tamanho maximo antes de fazer modificações (qualquer tela menor que 768 vai aplicar o estilo de dentro da @media) */
 @media(max-width:768px) {
     .col {
         width: 100%;
