@@ -13,10 +13,10 @@ body {
 }
 
 #icon {
-    width: 15%;
+    width: 20%;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 2.5%;
+    margin-bottom: 2%;
     display: block;
     float: none;
 }
@@ -50,12 +50,15 @@ main .row {
     background-color: rgba(0, 0, 0, 0.6);
 }
 
-main #content .row figure img
-{
-    height: 400px;
+main #content figcaption {
+    text-align: center;
 }
 
-main #content .row figure figcaption
+main #content figure {
+    border: #ddd 1px solid;
+}
+
+main #content figure figcaption
 {
     font-size: 1.5rem;
     font-weight: 600;
@@ -63,9 +66,13 @@ main #content .row figure figcaption
     font-style: italic;
 }
 
-main #content .row figure img
+.first {
+    float: none;
+}
+
+main #content figure img
 {
-    height: 400px;
+    height: 300px;
 }
 
 main #content em

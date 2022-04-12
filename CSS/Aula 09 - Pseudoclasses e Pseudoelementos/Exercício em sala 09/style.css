@@ -1,0 +1,28 @@
+@charset "utf-8";
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Jost', sans-serif;
+}
+
+::selection {
+    background-color: crimson;
+    color: aliceblue;
+}
+
+main p::selection {
+    background-color: limegreen;
+}
+
+main p::first-letter {
+    font-size: 200%;
+    background-color: darkorchid;
+}
+
+a {
+    
+}
+
+a:hover {
+    background-color: darkgreen;
+}
