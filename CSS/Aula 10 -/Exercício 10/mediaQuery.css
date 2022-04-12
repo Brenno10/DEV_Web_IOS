@@ -1,0 +1,11 @@
+@charset "utf-8";
+* {
+    font-family: 'Jost', sans-serif;
+}
+
+body {
+    background-image: ();
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}

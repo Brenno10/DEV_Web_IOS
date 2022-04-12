@@ -20,7 +20,8 @@ main p::first-letter {
 }
 
 a {
-    
+    text-decoration: none;
+    color: black;
 }
 
 a:hover {
