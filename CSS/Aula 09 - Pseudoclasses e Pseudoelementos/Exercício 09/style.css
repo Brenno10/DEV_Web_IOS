@@ -1,1 +1,9 @@
 @charset "utf-8";
+* {
+    margin: 0;
+
+}
+
+.imgFocus:hover {
+    opacity: .8;
+}
