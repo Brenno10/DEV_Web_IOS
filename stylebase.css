@@ -1,0 +1,35 @@
+* {
+    margin: 0;
+}
+
+html {
+    height: 100%;
+    min-height: 100%;
+}
+
+body {
+    background-color: #06000c;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+
+header {
+    background-color: #0b0b27;
+    border-bottom: 1px #ba155b solid;
+    margin-bottom: auto;
+    padding: 2vh 0vh;
+}
+
+footer {
+    background-color: #0b0b27;
+    border-top: 1px #ba155b solid;
+    margin-top: auto;
+    padding: 2vh 0vh;
+}
+
+footer p {
+    color: aliceblue;
+    text-align: center;
+}
