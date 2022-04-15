@@ -32,16 +32,14 @@ header h1 {
 .container {
     display: inline-grid;
     background-color: #232238;
-
-    grid-template-columns: repeat(3, 1fr [col-start]);
+    justify-items: end;
+    grid-template-columns: repeat(3, 1fr);
 }
 
 div .gridSize {
     width: 200px;
     height: 200px;
     font-size: 200%;
-    margin-left: auto;
-    margin-right: auto  ;
 }
 
 .item1 {
