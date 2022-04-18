@@ -49,6 +49,47 @@ header h1 {
     text-align: center;
 }
 
+.container {
+    background-color: antiquewhite;
+    height: 100vh;
+    display: grid;      /* define que vou trabalhar com grid */
+    grid-template-columns: 200px 200px;     /* distancia de cada linha vertical */
+    grid-template-rows: 200px 200px 200px;  /* distancia de cada linha horizontal */
+
+    align-content: center;      /* alinha na vertical */
+    justify-content: center;    /* alinha na horizontal */
+}
+
+.tamItem {
+    width: 150px;
+    height: 150px;
+    border: 1px #06000c solid;
+}
+
+.item1 {
+    background-color: blue;
+}
+
+.item2 {
+    background-color: blueviolet;
+}
+
+.item3 {
+    background-color: chartreuse;
+}
+
+.item4 {
+    background-color: crimson;
+}
+
+.item5 {
+    background-color: coral;
+}
+
+.item6 {
+    background-color: royalblue;
+}
+
 footer {
     background-color: #0b0b27;
     border-top: 1px #ba155b solid;
