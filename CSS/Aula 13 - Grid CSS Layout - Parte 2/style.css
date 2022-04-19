@@ -38,6 +38,11 @@ body::-webkit-scrollbar-thumb:hover {
     background-color: rgb(92, 92, 92);
 }
 
+.fadeIn {
+    /* ainmação fade-in ao iniciar a página */
+    animation: fadein 2s;
+}
+
 header {
     background-color: #0b0b27;
     border-bottom: 1px #ba155b solid;
@@ -51,18 +56,37 @@ header h1 {
 
 .container {
     background-color: antiquewhite;
-    height: 100vh;
+    border: 2px #ba155b solid;
+    height: 80vh;
+    width: 80vh;
+    margin: auto;
+
     display: grid;      /* define que vou trabalhar com grid */
+
     grid-template-columns: 200px 200px;     /* distancia de cada linha vertical */
     grid-template-rows: 200px 200px 200px;  /* distancia de cada linha horizontal */
 
-    align-content: center;      /* alinha na vertical */
-    justify-content: center;    /* alinha na horizontal */
+    /* "grid: 200px 200px 200px / 200px 200px; é a mesma coisa que as 2 linhas acima"
+    /* grid: "row" / "columns"; */
+
+    /* grid-template: ; */      /*  */
+
+    align-content: center;      /* alinha o grid na vertical */
+    justify-content: center;    /* alinha o grid na horizontal */
+
+    align-items: center;        /* alinha os itens dentro das células da grid na vertical */
+    justify-items: center;      /* alinha os itens dentro das células da grid na horizontal */
+
+    row-gap: 30px;      /* espaçamento entre linhas */
+    column-gap: 10px;   /* espaçamento entre colunas */
+
+    grid-auto-rows: 60px 60px;
+    grid-auto-columns: 90px 90px;
 }
 
 .tamItem {
-    width: 150px;
-    height: 150px;
+    width: 140px;
+    height: 140px;
     border: 1px #06000c solid;
 }
 
@@ -80,6 +104,9 @@ header h1 {
 
 .item4 {
     background-color: crimson;
+
+    /* "animation" define uma animação, "blink" é o tipo de animação, "3s" é a duração da animação, "step-end" diz para a animação começar pelo fim, "infinite" define a duração */
+    animation: blink .6s step-end infinite;
 }
 
 .item5 {
@@ -101,3 +128,12 @@ footer p {
     color: aliceblue;
     text-align: center;
 }
+
+@keyframes blink {          /* a porcentagem diz quanto sera dividido o tempo da animação "blink" */
+    50% { opacity: 10% }
+}
+
+@keyframes fadein {         /* animação fade-in ao iniciar a página */
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}   
