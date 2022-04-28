@@ -1,4 +1,4 @@
-1 = f
+1 = f) Yara mora no 4º andar e tem um cachorro.
 
 2 = {
     OR  - (V V V F)
@@ -10,10 +10,9 @@
 
 4 = {
     Formato - Nome / Idade / Animal Preferido / Filtro Solar FPS / Suco Preferido / Cor do Maio.
-    ? informação desconhecida.
 
-    1° - Raquel, tem 11 anos, gosta de gatos,            ?           , gosta de suco de laranja, usa um maio branco.
-    2° - Vivian,    ?    , gosta de pássaros, usa Filtro solar FPS 55, gosta de suco de limonada, usa um maio azul.
-    3° - Ana, tem 9 anos, gosta de cachorros, usa filtro solar FPS 50, gosta de suco de maracujá,        ?        .
-    4° -   ?  , tem 8 anos, gosta  de peixes,            ?           , gosta de suco de morango, usa um maio verde.
+    1° - Raquel, tem 11 anos, gosta de gatos,     usa filtro solar FPS 45, gosta de suco de laranja,  usa um maio branco.
+    2° - Vivian, tem 10 anos, gosta de pássaros,  usa Filtro solar FPS 55, gosta de suco de limonada, usa um maio azul.
+    3° - Bruna,  tem 9 anos,  gosta de cachorros, usa filtro solar FPS 40, gosta de suco de maracujá, usa um maio amarelo.
+    4° - Ana,    tem 8 anos,  gosta de peixes,    usa filtro solar FPS 50, gosta de suco de morango,  usa um maio verde.
 }
