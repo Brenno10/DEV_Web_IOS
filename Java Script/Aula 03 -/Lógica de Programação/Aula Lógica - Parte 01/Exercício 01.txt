@@ -1,0 +1,19 @@
+1 = f
+
+2 = {
+    OR  - (V V V F)
+    AND - (V F F F)
+    NOT - (F V F F)
+}
+
+3 = O gato está no sótão e o rato está no quarto
+
+4 = {
+    Formato - Nome / Idade / Animal Preferido / Filtro Solar FPS / Suco Preferido / Cor do Maio.
+    ? informação desconhecida.
+
+    1° - Raquel, tem 11 anos, gosta de gatos,            ?           , gosta de suco de laranja, usa um maio branco.
+    2° - Vivian,    ?    , gosta de pássaros, usa Filtro solar FPS 55, gosta de suco de limonada, usa um maio azul.
+    3° - Ana, tem 9 anos, gosta de cachorros, usa filtro solar FPS 50, gosta de suco de maracujá,        ?        .
+    4° -   ?  , tem 8 anos, gosta  de peixes,            ?           , gosta de suco de morango, usa um maio verde.
+}
