@@ -3,7 +3,7 @@
 2 = {
     OR  - (V V V F)
     AND - (V F F F)
-    NOT - (F V F F)
+    NOT - (F F V V)
 }
 
 3 = O gato está no sótão e o rato está no quarto
