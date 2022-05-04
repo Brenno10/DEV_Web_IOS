@@ -1,0 +1,37 @@
+@charset "utf-8";
+body{
+    background-color: lightcyan;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.text{
+    color: goldenrod;
+}
+
+.backgorund1{
+    background-color: aquamarine;
+}
+
+.backgorund{
+    background-color: lightskyblue;
+}
+
+li.red{
+    color: crimson;
+}
+
+li.green{
+    color: limegreen;
+}
+
+li.blue{
+    color: navy;
+}
+
+h3{
+    color: darkslateblue;
+}
+
+li{
+    color: violet;
+}

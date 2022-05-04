@@ -1,0 +1,134 @@
+@charset "utf-8";
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Jost', sans-serif;
+}
+
+html {
+    height: 100%;
+    min-height: 100%;
+}
+
+body {
+    font-size: 1.3rem;
+    background-color: #f44554;
+
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+
+    overflow: overlay;
+}
+
+body::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: rgba(150, 150, 150, 0.6);
+    border-radius: 10px;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(150, 150, 150);
+}
+
+header {
+    height: 50vh;
+    padding: 2rem;
+    margin-bottom: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #D6DF24;
+    color: #030305;
+}
+
+header h1{
+    text-align: center;
+    font-size: 4rem;
+    margin-bottom: 2rem;
+    line-height: 1.2rem;
+}
+
+header h3 {
+    font-style: italic;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    overflow: auto;
+    padding: 0 2rem;
+    color: #F9ABA7;
+}
+
+img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.card {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 2rem;
+    background: #947eac;
+    margin-bottom: 1.5rem;
+    border: 1px #030305 solid;
+    border-radius: 10px;
+}
+
+.card img {
+    height: 400px;
+}
+
+.card > div {
+    padding: 2rem;
+}
+
+.card:nth-child(odd) img {
+    order: 2;
+}
+
+.sCard {
+    display: grid;
+    grid-template-columns: 1fr .49fr 1fr;
+    grid-template-rows: auto;
+    grid-auto-flow: row;
+    height: fit-content;
+}
+
+.img1 {
+    grid-column: 1;
+}
+
+.text {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: center;
+    align-self: center;
+}
+
+.img2 {
+    grid-column: 3;
+}
+
+span {
+    font-weight: bold;
+}
+
+footer {
+    margin-top: auto;
+    padding: 4vh 0vh;
+    background-color: #D6DF24;
+}
+
+footer p {
+    text-align: center;
+}

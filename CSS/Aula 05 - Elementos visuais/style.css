@@ -1,0 +1,6 @@
+@charset "utf-8";
+.tborder{
+    border-width: 3px;
+    border-style: dashed;
+    border-color: darkblue;
+}

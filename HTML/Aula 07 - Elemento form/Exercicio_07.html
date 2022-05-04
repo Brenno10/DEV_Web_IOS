@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Sweet and Love</title>
+    </head>
+
+    <body>
+        <header>
+            <h1>Sweet and Love</h1>
+        </header>
+
+        <main>
+            <h3>Diga-nos sua opinião!</h3>
+            
+            <form action="brenno10000@outlook.com" method="post">
+                <!-- nome, idade, e-mail -->
+                <div>
+                    <p>Informações do usuário</p>
+                    <label for="iName">Nome</label>
+                    <input required autofocus type="text" size="35" name="userInfo" id="iName"><br>
+
+                    <label for="iAge">Idade</label>
+                    <input required type="text" size="35" name="userInfo" id="iAge"><br>
+
+                    <label for="iMail">E-Mail</label>
+                    <input required type="text" size="35" name="userInfo" id="iMail"><br>
+                </div>
+                
+                <!-- questionário -->
+                <div>
+                    <p>Você indicaria a Sweet and Love para um amigo?</p>
+                
+                    <label for="iYes">Sim</label>
+                    <input type="radio" name="friendShare" id="iYes" value="yes">
+
+                    <label for="iNo">Não</label>
+                    <input type="radio" name="friendShare" id="iNo" value="no">
+                </div>
+
+                <div>
+                    <p>O que você gostou na loja?</p>
+                    <label for="iSweets">Doces</label>
+                    <input type="checkbox" name="whatDidYouLike" id="iSweets" value="Doces"><br>
+
+                    <label for="iEnvironment">Ambiente</label>
+                    <input type="checkbox" name="whatDidYouLike" id="iEnvironment" value="Ambiente"><br>
+
+                    <label for="iDelivery">Entrega do pedido (app)</label>
+                    <input type="checkbox" name="whatDidYouLike" id="iDelivery" value="Entrega do pedido (app)"><br>
+
+                    <label for="iAttendance">Atendimento</label>
+                    <input type="checkbox" name="whatDidYouLike" id="iAttendance" value="Atendimento"><br>
+
+                    <label for="iValues">Valores</label>
+                    <input type="checkbox" name="whatDidYouLike" id="iValues" value="Valores">
+                </div><br>
+
+                <div>
+                    <label fo="iPurchase">Qual sobremesa ou salgado você comprou no seu último pedido?</label><br>
+                    <input required type="text" name="whatDidYouBuy" id="iPurchase">
+                </div><br>                
+
+                <div>
+                    <label for="wShop">Em qual loja você foi atendido?</label><br>
+                    <select required name="wichShop" id="wShop">
+                        <option value="aclimacao">Aclimação</option>
+                        <option value="liberdade">Liberdade</option>
+                        <option value="tatuape">Tatuapé</option>
+                        <option value="saoJoaquim">São Joaquim</option><br>
+                    </select><br>
+                </div>
+
+                <div>
+                    <p>Qual seu nível de satisfação com a Sweet and Love?</p>
+                    1
+                    <input required type="range" value="6" list="satLvl" min="1" max="10">
+                    10
+                    <datalist id="satLvl">
+                        <option value="1"></option>
+                        <option value="2"></option>
+                        <option value="3"></option>
+                        <option value="4"></option>
+                        <option value="5"></option>
+                        <option value="6"></option>
+                        <option value="7"></option>
+                        <option value="8"></option>
+                        <option value="9"></option>
+                        <option value="10"></option>
+                    </datalist>
+                </div><br>
+
+                <div>
+                    <label for="feedback">Deixe seu feedback!</label><br>
+                    <textarea cols="50" rows="8" id="feedback"></textarea>
+                </div>
+
+                <div>
+                    <br>
+                    <input type="submit" value="Enviar" id="iSend">
+                </div>
+            </form>
+        </main>
+
+        <footer>
+            <br>
+            <small>&copy;Sweet and Love todos os direitos reservados 2022</small>
+        </footer>
+    </body>
+
+</html>

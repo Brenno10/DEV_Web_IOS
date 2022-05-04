@@ -1,0 +1,186 @@
+@charset "utf-8";
+* {
+    margin: 0;
+}
+
+html {      /* configurações para fixar o header e o footer no topo e embaixo da página */
+    height: 100%;
+    min-height: 100%;
+}
+
+body {
+    background-image: url(Bg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    
+    color: #d8dad3;
+
+        /* configurações para fixar o header e o footer no topo e embaixo da página */
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    
+    overflow: overlay;      /* torna o fundo da scrollbar transparente */
+}
+
+body::-webkit-scrollbar {       /* tamanho da scrollbar */
+    width: 10px;
+}
+  
+body::-webkit-scrollbar-thumb {     /* estilização da barra da scrollbar */
+    background-color: rgba(68, 68, 68, 0.7);
+    border-radius: 10px;
+}
+
+body::-webkit-scrollbar-thumb:hover {       /* muda a cor da scrollbar quando alguem passa o mouse em cima */
+    background-color: rgb(92, 92, 92);
+}
+
+::selection {
+    background-color: rgb(58, 102, 29);
+}
+
+header {
+    background-color: rgb(49, 74, 32, .6);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0% 54%;
+    padding: 3vh;
+
+    margin-bottom: auto;
+}
+
+h1 {
+    text-align: center;
+    color: #c1c2bc;
+    opacity: 1;
+    font-style: italic;
+    font-size: 200%;
+}
+
+.container {
+    background-color: rgb(114, 84, 54, .4);
+    margin: 0% 5%;
+    padding: 2em;
+}
+
+.col {
+    border: 1px #271a0b solid;
+    border-radius: 10px;
+    margin: 2vh 0;
+    padding: 2vh;
+    box-sizing: border-box;
+    background-color: rgba(77, 56, 36, 0.7);
+    max-width: 100%;
+}
+
+hr {
+    width: 100%;
+    height: 1px;
+    border: 0px;
+    border-top: 1px solid red;
+    background-color: #dddddd;
+}
+
+.container p::first-letter {
+    font-size: 200%;
+    background-color: rgb(49, 74, 32);
+}
+
+.text {
+    text-align: center;
+    font-size: 1.1em;
+}
+
+li {
+    font-size: 1.1em;
+}
+
+.spacing {
+    margin: 60px 0px;
+}
+
+.imgConfig img {        /* configura o tamanho maximo das imagens e as ajusta de acordo */
+    max-width: 700px;
+    max-height: 700px;
+    width: auto;
+    height: auto;
+}
+
+.imgConfig figcaption {
+    text-align: center;
+    padding-bottom: 6px;
+}
+
+.imgConfig {        
+    margin-right: 3rem;
+    border: 1px rgb(49, 74, 32) solid;
+    background-color: rgb(49, 74, 32);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    max-width: fit-content;
+
+        /* "imgConfig" é as configurações para "imgFocus:hover img", que serve para mudar o tamanho da imagem quando alguem passa o mouse por cima */
+    -webkit-transition: -webkit-transform .5s ease;
+    transition: transform .5s ease;
+}
+
+.imgFocus:hover img{        /* vou falar a verdade. Não faço ideia do porque, mas ja que ta funcionando ta tudo ok :) */
+    -webkit-transform: scale(1.1);
+    transform: scale(1.03);
+}
+
+.col figure {
+    float: left;
+}
+
+.clearfix:before, .clearfix:after {     /* olha o que eu tive que fazer para consertar o float... Também não sei oque eu fiz :P */
+    content: "020";
+    display: block;
+    height: 0;
+    overflow: hidden;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    zoom: 1;
+}
+
+.buttonFix {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.button {
+    border: 1px rgb(28, 43, 19) solid;
+    border-radius: 10px;
+    padding: 5px 10px;
+    text-decoration: none;
+    background-color: rgb(49, 74, 32);
+    color: #c1c2bc;
+}
+
+.button:hover {
+    background-color: rgb(32, 49, 21);
+}
+
+footer {
+    margin-top: auto;
+    text-align: center;
+    background-color: rgb(49, 75, 32, .7);
+    color: #c1c2bc;
+    padding: 3vh;
+    font-size: .8em;
+}
+
+footer p::before{
+    content: "Copyright © 2022 | ";
+}
+
+footer p::after {
+    content: " | Brenno Caravante Alves Miranda";
+}

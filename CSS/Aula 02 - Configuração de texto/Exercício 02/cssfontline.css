@@ -1,0 +1,20 @@
+@charset "utf-8";
+body{
+    font-family: 'Shadows Into Light', cursive;
+    line-height: 200%;
+    text-shadow: 3px 3px 5px;
+    font-size: 130%;
+}
+
+h1{
+    text-align: center;
+}
+
+p{
+    font-weight: bold;
+    text-indent: 1.5em;
+}
+
+footer{
+    font-style: italic;
+}

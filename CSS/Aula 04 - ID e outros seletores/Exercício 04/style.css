@@ -1,0 +1,50 @@
+@charset "utf-8";
+*{
+    background-color: #11051b;
+    color: #ffb238;
+}
+
+header nav p{
+    text-align: center;
+}
+
+a#navHeader{
+    color:#b90041;
+}
+
+img#icon{
+    float: left, top;
+}
+
+.table{
+    background-color: #49007e;
+    text-align: center;
+    font-family: 'Grape Nuts', cursive;
+}
+
+.title{
+    font-weight: 600;
+    color: rgb(0, 155, 0);
+    text-align: center;
+}
+
+#contact{
+    text-align: left;
+}
+
+#copy{
+    text-align: center;
+    background-color: #49007e;
+}
+
+tr#tabletitle{
+    font-weight: 600;
+}
+
+th#tcolor{
+    background-color: #003a91;
+}
+
+td{
+    background-color: #0d0b0f;
+}

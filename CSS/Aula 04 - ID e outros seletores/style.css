@@ -1,0 +1,28 @@
+@charset "utf-8";
+/* aplica em todas as tags html */
+*{
+    background-color: #fa8072;
+    font-family: 'Lobster', cursive;
+    font-size: 125%;
+}
+
+/* class */
+.esqueci{
+    color: #40e0d0;
+}
+
+/* id */
+#esqueci2{
+    color: #4b0082;
+}
+
+p#sobrenome{
+    color: #800000;
+}
+
+/* especifica as tags <p> que estão dentro da tag <section> */
+section p{
+    color: #ffd700;
+    background-color: aqua;
+    font-size: 23px;
+}

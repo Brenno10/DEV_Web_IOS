@@ -1,0 +1,101 @@
+@charset "utf-8";
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Jost', sans-serif;
+}
+body {
+    background-image: url(black_hole.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100vh;
+    color: aliceblue;
+    line-height: 1.6em;
+}
+
+#head {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding-top: 1vh;
+    padding-bottom: 2vh;
+    border-bottom: #191123 1px solid;
+}
+
+#head h1 {
+    text-align: center;
+    color: #1b0035;
+}
+
+#head .btn {
+    background-color: #110021;
+    color: rgb(235, 135, 43);
+    border: rgb(174, 180, 185) 1px solid;
+    border-radius: 10px;
+    border-style: inset;
+    padding: 10px 15px 10px 15px;
+    margin-left: 1vh;
+    text-decoration: none;
+}
+
+#main {
+    margin-top: 0vh;
+    margin-bottom: 0vh;
+    margin-left: 1vh;
+    margin-right: 1vh;
+}
+
+#main section {
+    background-color: rgba(0, 0, 0, 0.5);
+    text-indent: 2%;
+}
+
+#main h3 {
+    text-align: center;
+    padding-top: 2%;
+    margin-bottom: 2%;
+}
+
+#main strong {
+    font-style: italic;
+    font-size: 1.1em;
+}
+
+#whatAreThey img{
+    width: 25%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2.5%;
+    display: block;
+}
+
+#whereTheyCome img {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2.5%;
+    display: block;
+}
+
+#whatHappens img{
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2.5%;
+    display: block;
+}
+
+#conclusion .real img{
+    width: 20%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2.5%;
+    display: block;
+}
+
+#foot {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding-top: 1%;
+    padding-bottom: 1%;
+    text-align: center;
+    border-top: #191123 1px solid;
+}
