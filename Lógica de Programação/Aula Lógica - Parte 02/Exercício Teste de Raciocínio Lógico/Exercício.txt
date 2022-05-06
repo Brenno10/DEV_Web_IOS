@@ -1,0 +1,17 @@
+1)
+pianista: Danilo
+saxofonista: Bernardo
+baterista: Custódio
+violinista: Alberto
+
+a) Danilo, Bernardo, Custódioe Alberto.
+
+2)
+Formato: esposa, marido. {
+    casal 1: Joana, Henrique.
+    casal 2: Isabel, Pedro.
+    casal 3: Ana, Rogério.
+    casal 4: Maria, Luíz.
+}
+
+a) I - Rogério é o marido de Ana;
