@@ -4,7 +4,7 @@ const alunos = [
         firstName: 'Nora',
         lastName: 'kym',
         age: 16,
-        notas: [7, 6, 8, 6],
+        notas: [7, 6, 9, 6],
         media: 0,
         pass: 'aprovada',
         turma: 2,
