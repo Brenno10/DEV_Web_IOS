@@ -33,27 +33,40 @@ const tableINSS = [
     [3641, 7087, 0.14],
 ];
 
-switch (intColab.salario) {
-    case intColab.salario <= tableINSS[0][1]:
-        intColab.salario + intColab.salario * tableINSS[0][2];
-        break;
-
-    case intColab.salario > tableINSS[1][0] &&
-        intColab.salario <= tableINSS[1][1]:
-        intColab.salario + intColab.salario * tableINSS[1][2];
-        break;
-
-    case intColab.salario > tableINSS[2][0] &&
-        intColab.salario <= tableINSS[2][1]:
-        intColab.salario + intColab.salario * tableINSS[2][2];
-        break;
-
-    case intColab.salario > tableINSS[3][0] &&
-        intColab.salario <= tableINSS[3][1]:
-        intColab.salario + intColab.salario * tableINSS[3][2];
-        break;
-
-    case intColab.salario > tableINSS[3][1]:
-        intColab.salario + intColab.salario * tableINSS[3][2];
-        break;
+for (let i = 0; i < intColab.length; i++) {
+    if (intColab[i].vinculo === 'CLT') {
+        if (intColab[i].salario <= tableINSS[0][1]) {
+            var INSS = intColab[i].salario * tableINSS[0][2];
+        } else if (
+            intColab[i].salario > tableINSS[1][0] &&
+            intColab[i].salario <= tableINSS[1][1]
+        ) {
+            var INSS = intColab[i].salario * tableINSS[1][2];
+        } else if (
+            intColab[i].salario > tableINSS[2][0] &&
+            intColab[i].salario <= tableINSS[2][1]
+        ) {
+            var INSS = intColab[i].salario * tableINSS[2][2];
+        } else if (
+            intColab[i].salario > tableINSS[3][0] &&
+            intColab[i].salario <= tableINSS[3][1]
+        ) {
+            var INSS = intColab[i].salario * tableINSS[3][2];
+        } else if (intColab[i].salario > tableINSS[3][1]) {
+            var INSS = intColab[i].salario * tableINSS[3][2];
+        } else {
+            console.log('incalculavel');
+        }
+        console.log(
+            `O vínculo de ${intColab[i].nome} é ${
+                intColab[i].vinculo
+            }, seu salário é de ${
+                intColab[i].salario
+            } e seu INSS é de ${INSS.toFixed(1)}`
+        );
+    } else {
+        console.log(
+            `O vínculo de ${intColab[i].nome} é ${intColab[i].vinculo}, então não paga INSS.`
+        );
+    }
 }
