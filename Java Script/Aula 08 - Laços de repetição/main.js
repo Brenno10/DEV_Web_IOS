@@ -1,4 +1,4 @@
-//
+// while
 var profHello = 1;
 
 while (profHello <= 5) {
@@ -14,17 +14,42 @@ do {
     profHello++;
 } while (profHello <= 5);
 
-// Exibir o valor de 1 até 10
+// Incremento
 let val = 1;
 
-while (1 <= 10) {
+// Começa com 1 e termina em 10
+while (val <= 10) {
     console.log(val);
     val++;
 }
 
+// Decremento
 let val2 = 10;
+
 // Começa com 10 e termina em 0
 while (val2 >= 0) {
     console.log(`O valor é ${val2}`);
     val2--;
+}
+
+// for
+for (let varr = 1; varr <= 5; varr++) {
+    console.log(`Olá jackass`);
+}
+
+// Começa com o valor 10 e termina com 0
+for (let varr1 = 10; varr1 >= 0; varr1--) {
+    console.log(`Contador: ${varr1}`);
+}
+
+// Incremento de 2 ou mais
+for (let i = 1; i <= 30; i = i + 2) {
+    console.log(`Uhu ${i}`);
+}
+
+// Laços de repetições e arrays
+const frutas = ['maca', 'laranja', 'pera', 10];
+
+for (let j = 0; j < frutas.length; j++) {
+    console.log(frutas[j]);
 }
