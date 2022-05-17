@@ -29,8 +29,7 @@ const alunos = [
 alunos.forEach((name) => {
     if (name.gender == 'female') {
         console.log(`Aluna: ${name.nome}, Nota: ${name.nota}`);
-    }
-    else {
+    } else {
         console.log(`Aluno: ${name.nome}, Nota: ${name.nota}`);
     }
 });
@@ -43,20 +42,18 @@ let highScore = alunos.filter((highScore) => {
 highScore.forEach((Name) => {
     if (Name.gender == 'female') {
         console.log(`A aluna ${Name.nome} obteu nota maior que 6`);
-    }
-    else {
+    } else {
         console.log(`O aluno ${Name.nome} obteu nota maior que 6`);
     }
 });
 
-// Acha o aluno com menor nota
+// Acha o aluno com nota menor que 6
 let lowScore = alunos.find((lowScore) => {
     return lowScore.nota < 5;
 });
 
 if (lowScore.gender == 'female') {
     console.log(`A aluna ${lowScore.nome} obteve nota menor que 5`);
-}
-else {
+} else {
     console.log(`O aluno ${lowScore.nome} obteve nota menor que 5`);
 }
