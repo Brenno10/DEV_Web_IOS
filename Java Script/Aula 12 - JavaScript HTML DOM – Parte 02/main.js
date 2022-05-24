@@ -1,5 +1,5 @@
 // Metodo getElement     By   Id
-//       pega Elemento  pelo  Id
+// pega Elemento  pelo  Id
 
 //Criando variavel
 let titulo = document.getElementById('titulo');
