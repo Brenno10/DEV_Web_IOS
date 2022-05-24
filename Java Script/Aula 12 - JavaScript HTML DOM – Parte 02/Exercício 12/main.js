@@ -54,37 +54,42 @@ function multiply() {
     let initialBase = prompt('Por favor digite um número:');
     let base = initialBase.trim();
 
+    // Verifica se o valor recebido não é vazio
     if (base.length === 0) {
         alert(`Por favor digite um número`);
         multiply();
-    }
+    } else {
+        // isNaN é uma função que verifica se é um número, aceita como parametro oque sera comparado e retorna true ou false
+        if (!isNaN(base)) {
+            if (base != 0) {
+                let multSect = document.createElement('section');
+                document.body.appendChild(multSect);
 
-    // isNaN é uma função que verifica se é um número, aceita como parametro oque sera comparado e retorna true ou false
-    if (!isNaN(base)) {
-        if (base != 0) {
-            let multSect = document.createElement('section');
-            document.body.appendChild(multSect);
+                let listName = document.createElement('h3');
+                multSect.appendChild(listName);
+                listName.innerHTML = `Tabuada de ${base} de 1 a 10`;
 
-            let listName = document.createElement('h3');
-            multSect.appendChild(listName);
-            listName.innerHTML = `Tabuada de ${base} de 1 a 10`;
+                let multNum = document.createElement('ul');
+                multSect.appendChild(multNum);
 
-            let multNum = document.createElement('ul');
-            multSect.appendChild(multNum);
-            for (let i = 1; i <= 10; i++) {
-                let multList = document.createElement('li');
-                multNum.appendChild(multList);
+                for (let i = 1; i <= 10; i++) {
+                    let multList = document.createElement('li');
+                    multNum.appendChild(multList);
 
-                multList.innerHTML = `${base} x ${i} = ${base * i} <br>`;
+                    multList.innerHTML = `${base} x ${i} = ${base * i} <br>`;
+                }
+            } else {
+                let multSect = document.createElement('section');
+                document.body.appendChild(multSect);
+
+                let listName = document.createElement('h3');
+                multSect.appendChild(listName);
+
+                listName.innerHTML = `Todo Número multiplicado por 0 é 0!`;
             }
         } else {
-            let multList = document.createElement('li');
-            multNum.appendChild(multList);
-
-            multList.innerHTML = `Todo Número multiplicado por 0 é 0!`;
+            alert(`${base} não é um número!`);
+            multiply();
         }
-    } else {
-        alert(`${base} não é um número!`);
-        multiply();
     }
 }
