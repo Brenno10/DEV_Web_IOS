@@ -21,7 +21,6 @@ function umbrella() {
     let figureImg = document.createElement('figure');
     figureSect.appendChild(figureImg);
 
-    // É melhor adicionar o estilo antes de completar o elemento
     let img = document.createElement('img');
     figureImg.appendChild(img);
     img.src = './assets/umbrella.jpg';
