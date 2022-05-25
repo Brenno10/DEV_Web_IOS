@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="assets/style/style.css" type="text/css">
+        <title>Exercício 14</title>
+    </head>
+    <body>
+        <section class="container">
+            <h2>Formulário</h2>
+            <form id="form">
+                <div>
+                    <label for="inputName">Nome</label>
+                    <input type="text" id="Name" required autofocus>
+                </div>
+                <div id="noName"></div>
+                
+                <div>
+                    <label for="birthday">Data de nascimento</label>
+                    <input type="date" id="birthday" required>
+                </div>
+                <div id="noBirthday"></div>
+                
+                <div>
+                    <label for="mail">e-mail</label>
+                    <input type="text" id="email" required>
+                </div>
+                <div id="noEmail"></div>
+                
+                <div id="buttons">
+                    <button class="btn" onclick="createNewUser()" id="include">Adicionar</button>
+                    <button class="btn" id="exclude">Excluir</button>
+                </div>
+            </form>
+            <ul id="users"></ul>
+        </section>
+        
+        <script src="assets/scripts/main.js"></script>
+    </body>
+</html>

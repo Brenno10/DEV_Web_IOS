@@ -32,10 +32,9 @@ function umbrella() {
 }
 
 function requiredName() {
-    let userName = prompt('Seja Bem-Vindo(a); por favor preencha seu nome:');
-    let user = userName.trim();
+    let user = prompt('Seja Bem-Vindo(a); por favor preencha seu nome:');
 
-    if (user != '') {
+    if (user.trim() != '') {
         let welcomeSec = document.createElement('section');
         document.body.appendChild(welcomeSec);
 
@@ -51,7 +50,7 @@ function requiredName() {
 
 function multiply() {
     let initialBase = prompt('Por favor digite um número:');
-    let base = initialBase.trim();
+    let base = parseInt(initialBase.replace(/\s+/, ''));
 
     // Verifica se o valor recebido não é vazio
     if (base.length === 0) {
@@ -87,7 +86,7 @@ function multiply() {
                 listName.innerHTML = `Todo Número multiplicado por 0 é 0!`;
             }
         } else {
-            alert(`${base} não é um número!`);
+            alert(`${initialBase} não é um número!`);
             multiply();
         }
     }

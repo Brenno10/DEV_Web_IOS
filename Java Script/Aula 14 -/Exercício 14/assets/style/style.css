@@ -1,0 +1,19 @@
+@charset "utf-8";
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.container label {
+    display: block;
+}
+.container {
+    margin: auto;
+    width: 500px;
+    overflow: auto;
+    padding: 3rem 2rem;
+    border: 1px #777 solid;
+}
+.container h2 {
+    text-align: center;
+}
