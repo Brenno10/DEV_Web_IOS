@@ -12,8 +12,8 @@
             <h2>Formulário</h2>
             <form id="form">
                 <div>
-                    <label for="inputName">Nome</label>
-                    <input type="text" id="Name" required autofocus>
+                    <label for="name">Nome</label>
+                    <input type="text" id="name" required autofocus>
                 </div>
                 <div id="noName"></div>
                 
@@ -24,16 +24,26 @@
                 <div id="noBirthday"></div>
                 
                 <div>
-                    <label for="mail">e-mail</label>
+                    <label for="email">e-mail</label>
                     <input type="text" id="email" required>
                 </div>
                 <div id="noEmail"></div>
                 
-                <div id="buttons">
-                    <button class="btn" onclick="createNewUser()" id="include">Adicionar</button>
-                    <button class="btn" id="exclude">Excluir</button>
+                <div id="add">
+                    <button type="button" class="btn" id="include">Adicionar</button>
+                </div>
+                <hr>
+                <div id="del">
+                    <label for="deleteUser">Exclua um usuário</label>
+                    <input type="text" id="deleteUser">
+                    <div id="noId"></div>
+                    <button type="button" class="btn" id="exclude">Excluir</button>
                 </div>
             </form>
+        </section>
+        
+        <section class="container">
+            <h2>Usuários Adicionados</h2>
             <ul id="users"></ul>
         </section>
         
