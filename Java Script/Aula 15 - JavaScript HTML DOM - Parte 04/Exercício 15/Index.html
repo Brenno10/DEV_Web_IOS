@@ -11,16 +11,18 @@
     
     <body>
         <div class="container">
-            <div>
-                <button id="addArroz" class="btn btn-danger">+Arroz</button>
+            <div class="addNewItem input-group mb-3">
+                <input type="text" placeholder="Nome do item" class="form-control" id="itemName">
+                <input type="text" placeholder="Preço do item" class="form-control" id="itemPrice">
+                <button id="addNewItem" class="btn btn-danger">Adicionar item</button>
             </div>
-            
-            <div>
-                <form>
-                    <ul id="items"></ul>
-                    <ul id="totalPrice"></ul>
-                </form>
-            </div>
+        </div>
+        
+        <div class="container">
+            <form>
+                <ul class="list-group" id="items"></ul>
+                <ul id="totalPrice"></ul>
+            </form>
         </div>
         
         <script src="scripts/main.js"></script>
