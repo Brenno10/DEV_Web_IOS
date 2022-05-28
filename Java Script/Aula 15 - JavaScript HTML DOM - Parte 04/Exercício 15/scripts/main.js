@@ -2,6 +2,12 @@ let itemName = document.getElementById('itemName');
 let itemPrice = document.getElementById('itemPrice');
 let newItemBtnList = document.getElementById('items');
 let addNewItem = document.getElementById('addNewItem');
+let errorMensage = document.getElementById('error');
+
+let totalPrice = document.getElementById('totalPrice');
+let finalPriceDisplay = document.createElement('li');
+totalPrice.appendChild(finalPriceDisplay);
+let pricePool = [];
 
 class PriceTable {
     constructor(name, price) {
@@ -67,8 +73,12 @@ class PriceTable {
             e.preventDefault();
 
             currentValue++;
+            totalPriceCalculationAddition(itemPrice.value);
+
             if (currentValue === 0) {
+                this.parentElement.parentElement.remove();
             }
+
             moreItemValue.innerText = `${currentValue}`;
         }
 
@@ -77,24 +87,69 @@ class PriceTable {
 
             currentValue--;
             if (currentValue === 0) {
+                this.parentElement.parentElement.remove();
             }
+
             moreItemValue.innerText = `${currentValue}`;
+            totalPriceCalculationAddition(-itemPrice.value);
         }
 
         function removeItem(e) {
             e.preventDefault();
 
+            totalPriceCalculationAddition(-itemPrice.value * currentValue);
+
             currentValue = 0;
             if (currentValue === 0) {
+                this.parentElement.parentElement.remove();
             }
             moreItemValue.innerText = `${currentValue}`;
         }
+
+        totalPriceCalculationAddition(itemPrice.value);
     }
 }
 
-addNewItem.addEventListener('click', prevent);
+function itemPriceClear() {
+    itemPrice.value = '';
+}
 
-function prevent(e) {
+function totalPriceCalculationAddition(i) {
+    let fixedItemPrice = parseInt(i);
+    pricePool.push(fixedItemPrice);
+    let total = 0;
+
+    if (pricePool.length <= 1) {
+        total = i;
+    } else {
+        for (let i = 0; i < pricePool.length; i++) {
+            total += pricePool[i];
+        }
+    }
+
+    finalPriceDisplay.innerText = `${total}`;
+    finalPriceDisplay.classList = 'list-group-item float-start';
+}
+
+// Criando mensagem de erro
+let noNumberHere = document.createElement('p');
+errorMensage.appendChild(noNumberHere);
+noNumberHere.classList = 'error text-opacity-75 text-danger';
+
+addNewItem.addEventListener('click', createAndPrevent);
+
+function createAndPrevent(e) {
     e.preventDefault();
-    new PriceTable(itemName.value, itemPrice.value);
+
+    if (itemPrice.value == 0) {
+        noNumberHere.innerText = `Digite um número!`;
+        setTimeout(() => (noNumberHere.innerText = ''), 3000);
+        itemPriceClear();
+    } else if (isNaN(parseInt(itemPrice.value))) {
+        noNumberHere.innerText = `${itemPrice.value} não é um número!`;
+        setTimeout(() => (noNumberHere.innerText = ''), 3000);
+        itemPriceClear();
+    } else {
+        new PriceTable(itemName.value, itemPrice.value);
+    }
 }

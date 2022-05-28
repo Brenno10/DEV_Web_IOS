@@ -11,17 +11,18 @@
     
     <body>
         <div class="container">
-            <div class="addNewItem input-group mb-3">
-                <input type="text" placeholder="Nome do item" class="form-control" id="itemName">
-                <input type="text" placeholder="Preço do item" class="form-control" id="itemPrice">
-                <button id="addNewItem" class="btn btn-danger">Adicionar item</button>
+            <div class="addNewItem input-group mb-3 row">
+                <input type="text" placeholder="Nome do item" class="form-control col" id="itemName">
+                <input type="text" placeholder="Preço do item" class="form-control col" id="itemPrice">
+                <button class="btn btn-danger col" id="addNewItem">Adicionar item</button>
             </div>
+            <div class="text-end" id="error"></div>
         </div>
         
         <div class="container">
             <form>
                 <ul class="list-group" id="items"></ul>
-                <ul id="totalPrice"></ul>
+                <ul class="fixed-bottom text-center" id="totalPrice" style="list-style: none;"></ul>
             </form>
         </div>
         
