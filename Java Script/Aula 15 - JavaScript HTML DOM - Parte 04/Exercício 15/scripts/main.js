@@ -149,6 +149,10 @@ function createAndPrevent(e) {
         noNumberHere.innerText = `${itemPrice.value} não é um número!`;
         setTimeout(() => (noNumberHere.innerText = ''), 3000);
         itemPriceClear();
+    } else if (itemPrice.value < 0) {
+        noNumberHere.innerText = `Números negativos não são permitidos!`;
+        setTimeout(() => (noNumberHere.innerText = ''), 3000);
+        itemPriceClear();
     } else {
         new PriceTable(itemName.value, itemPrice.value);
     }
