@@ -144,7 +144,7 @@ function totalPriceCalculationAddition(i) {
         }
     }
 
-    finalPriceDisplay.innerText = `${total}`;
+    finalPriceDisplay.innerText = `R$:${total},00`;
     finalPriceDisplay.classList = 'list-group-item float-start';
 }
 
@@ -171,11 +171,9 @@ function createAndPrevent(e) {
         setTimeout(() => (noNumberHere.innerText = ''), 3000);
         itemPriceClear();
     } else if (itemQuantity.value == 0) {
-        noNumberHere.innerText = `Digite um número!`;
-        setTimeout(() => (noNumberHere.innerText = ''), 3000);
-        itemQuantityClear();
+        new PriceTable(itemName.value, itemPrice.value);
     } else if (isNaN(parseInt(itemQuantity.value))) {
-        noNumberHere.innerText = `Digite um número!`;
+        noNumberHere.innerText = `${itemQuantity.value} não é um número!`;
         setTimeout(() => (noNumberHere.innerText = ''), 3000);
         itemQuantityClear();
     } else if (itemQuantity.value < 0) {
