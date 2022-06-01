@@ -1,5 +1,6 @@
 let itemName = document.getElementById('itemName');
 let itemPrice = document.getElementById('itemPrice');
+let itemQuantity = document.getElementById('itemQuantity');
 let newItemBtnList = document.getElementById('items');
 let addNewItem = document.getElementById('addNewItem');
 let errorMensage = document.getElementById('error');
@@ -7,6 +8,7 @@ let errorMensage = document.getElementById('error');
 let totalPrice = document.getElementById('totalPrice');
 let finalPriceDisplay = document.createElement('li');
 totalPrice.appendChild(finalPriceDisplay);
+let currentValue = 1;
 let pricePool = [];
 
 class PriceTable {
@@ -33,7 +35,6 @@ class PriceTable {
     addAllButtons(whereToPlace) {
         // Quantidade atual de itens
         let moreItemValue = document.createElement('p');
-        let currentValue = 1;
 
         moreItemValue.innerText = `${currentValue}`;
         moreItemValue.classList = 'list-group-item float-end';
@@ -72,14 +73,22 @@ class PriceTable {
         function moreItems(e) {
             e.preventDefault();
 
-            currentValue++;
-            totalPriceCalculationAddition(itemPrice.value);
+            if (currentValue >= 100) {
+                noNumberHere.innerText = `O máximo é 100!`;
+                setTimeout(() => (noNumberHere.innerText = ''), 3000);
 
-            if (currentValue === 0) {
-                this.parentElement.parentElement.remove();
+                currentValue = 100;
+                moreItemValue.innerText = `${currentValue}`;
+            } else {
+                currentValue++;
+                totalPriceCalculationAddition(itemPrice.value);
+
+                if (currentValue === 0) {
+                    this.parentElement.parentElement.remove();
+                }
+
+                moreItemValue.innerText = `${currentValue}`;
             }
-
-            moreItemValue.innerText = `${currentValue}`;
         }
 
         function lessItems(e) {
@@ -106,12 +115,20 @@ class PriceTable {
             moreItemValue.innerText = `${currentValue}`;
         }
 
-        totalPriceCalculationAddition(itemPrice.value);
+        totalPriceCalculationAddition(itemPrice.value * currentValue);
     }
+}
+
+function itemNameClear() {
+    itemName.value = '';
 }
 
 function itemPriceClear() {
     itemPrice.value = '';
+}
+
+function itemQuantityClear() {
+    itemQuantity.value = '';
 }
 
 function totalPriceCalculationAddition(i) {
@@ -150,10 +167,27 @@ function createAndPrevent(e) {
         setTimeout(() => (noNumberHere.innerText = ''), 3000);
         itemPriceClear();
     } else if (itemPrice.value < 0) {
-        noNumberHere.innerText = `Números negativos não são permitidos!`;
+        noNumberHere.innerText = `Preços negativos não Existem`;
         setTimeout(() => (noNumberHere.innerText = ''), 3000);
         itemPriceClear();
+    } else if (itemQuantity.value == 0) {
+        noNumberHere.innerText = `Digite um número!`;
+        setTimeout(() => (noNumberHere.innerText = ''), 3000);
+        itemQuantityClear();
+    } else if (isNaN(parseInt(itemQuantity.value))) {
+        noNumberHere.innerText = `Digite um número!`;
+        setTimeout(() => (noNumberHere.innerText = ''), 3000);
+        itemQuantityClear();
+    } else if (itemQuantity.value < 0) {
+        noNumberHere.innerText = `Quantidades negativas não são permitidas!`;
+        setTimeout(() => (noNumberHere.innerText = ''), 3000);
+        itemQuantityClear();
+    } else if (itemQuantity.value >= 100) {
+        noNumberHere.innerText = `O máximo é 100!`;
+        setTimeout(() => (noNumberHere.innerText = ''), 3000);
+        itemQuantityClear();
     } else {
+        currentValue = itemQuantity.value;
         new PriceTable(itemName.value, itemPrice.value);
     }
 }
