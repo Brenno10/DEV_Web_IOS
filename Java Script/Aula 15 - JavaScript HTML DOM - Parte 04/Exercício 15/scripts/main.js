@@ -8,13 +8,13 @@ let errorMensage = document.getElementById('error');
 let totalPrice = document.getElementById('totalPrice');
 let finalPriceDisplay = document.createElement('li');
 totalPrice.appendChild(finalPriceDisplay);
-let currentValue = 1;
 let pricePool = [];
 
 class PriceTable {
-    constructor(name, price) {
+    constructor(name, price, quantity) {
         this.name = name;
         this.price = price;
+        this.quantity = quantity;
         this.createNewItem();
     }
 
@@ -34,6 +34,7 @@ class PriceTable {
 
     addAllButtons(whereToPlace) {
         // Quantidade atual de itens
+        let currentValue = this.quantity;
         let moreItemValue = document.createElement('p');
 
         moreItemValue.innerText = `${currentValue}`;
@@ -171,7 +172,7 @@ function createAndPrevent(e) {
         setTimeout(() => (noNumberHere.innerText = ''), 3000);
         itemPriceClear();
     } else if (itemQuantity.value == 0) {
-        new PriceTable(itemName.value, itemPrice.value);
+        new PriceTable(itemName.value, itemPrice.value, 1);
     } else if (isNaN(parseInt(itemQuantity.value))) {
         noNumberHere.innerText = `${itemQuantity.value} não é um número!`;
         setTimeout(() => (noNumberHere.innerText = ''), 3000);
@@ -185,7 +186,6 @@ function createAndPrevent(e) {
         setTimeout(() => (noNumberHere.innerText = ''), 3000);
         itemQuantityClear();
     } else {
-        currentValue = itemQuantity.value;
-        new PriceTable(itemName.value, itemPrice.value);
+        new PriceTable(itemName.value, itemPrice.value, itemQuantity.value);
     }
 }
