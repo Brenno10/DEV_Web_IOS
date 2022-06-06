@@ -9,9 +9,9 @@
         <title>Exercício 15</title>
     </head>
     
-    <body>
-        <div class="container">
-            <div class="addNewItem input-group mb-3 row">
+    <body class="d-grid row align-items-start">
+        <div class="container col-7">
+            <div class="addNewItem input-group p-2 row bg-light border">
                 <input type="text" placeholder="Nome do item" class="form-control col" id="itemName">
                 <input type="number" placeholder="Preço do item" class="form-control col" id="itemPrice">
                 <input type="number" placeholder="Quantidade de itens" class="form-control col" id="itemQuantity">
@@ -20,7 +20,7 @@
             <div class="text-end" id="error"></div>
         </div>
         
-        <div class="container">
+        <div class="container p-2 bg-light border col-6">
             <form>
                 <ul class="list-group" id="items"></ul>
                 <ul class="fixed-bottom text-center" id="totalPrice" style="list-style: none;"></ul>
