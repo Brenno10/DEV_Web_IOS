@@ -146,7 +146,8 @@ function totalPriceCalculationAddition(i) {
     }
 
     finalPriceDisplay.innerText = `R$:${total},00`;
-    finalPriceDisplay.classList = 'list-group-item float-start';
+    finalPriceDisplay.classList =
+        'list-group-item float-start bg-light border p-2';
 }
 
 // Criando mensagem de erro
