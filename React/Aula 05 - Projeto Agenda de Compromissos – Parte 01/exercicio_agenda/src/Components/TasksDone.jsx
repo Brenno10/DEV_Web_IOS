@@ -1,5 +1,5 @@
-function TasksDone () {
-    
+function TasksDone({ tasks, onDelete, onToggle }) {
+
 }
 
 export default TasksDone;
