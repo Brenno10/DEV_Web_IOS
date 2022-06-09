@@ -8,10 +8,19 @@
 .item {
     background-color: rgba(216, 191, 216, 0.39);
     border: 1px solid #ccc;
+    margin-top: 40px;
     width: 200px;
     height: 130px;
     text-align: center;
     padding: 1rem;
+}
+
+.name {
+    border-bottom: 1px solid black;
+}
+
+h2 {
+    color: blue;
 }
 
 table {
@@ -19,7 +28,6 @@ table {
 }
 
 table, th, td {
-    border: 1px solid;
     margin: auto;
     padding-left: 10px;
     padding-right: 10px;

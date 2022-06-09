@@ -6,7 +6,7 @@ function Nome ( { aluno } )
     const nome = useState( aluno );
 
     return (
-        <div>
+        <div className="name">
             <h2>{nome}</h2>
         </div>
     );
