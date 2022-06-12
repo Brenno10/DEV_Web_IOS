@@ -18,6 +18,7 @@ html, body
     flex: content;
 }
 
+/* container do modal e plano de fundo */
 .modalContainer {
     width: 100vw;
     height: 100vh;
@@ -48,6 +49,7 @@ html, body
     position: relative;
 }
 
+/* animação do modal */
 @keyframes modal {
     from {
         opacity: 0;
@@ -64,6 +66,7 @@ html, body
     animation: modal .3s;
 }
 
+/* botão de fechar o modal */
 .closeModal {
     position: absolute;
     color: white;
@@ -93,10 +96,5 @@ html, body
 ul {
     display: flex;
     flex-direction: column;
-    border: 1px solid black;
-}
-
-li {
-    list-style: none;
     border: 1px solid black;
 }

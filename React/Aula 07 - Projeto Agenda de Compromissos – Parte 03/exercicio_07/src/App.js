@@ -26,9 +26,11 @@ function App() {
         },
     ]);
 
+    // filtro de tarefas a fazer e feitas
     let ongoingTasks = tasks.filter((task) => task.reminder);
     let finishedTasks = tasks.filter((task) => !task.reminder);
 
+    // proximo id
     let nextID = tasks.length;
 
     function createNewTask() {
