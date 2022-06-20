@@ -16,7 +16,7 @@ function NewTask({ createNewTask }) {
     return (
         <div>
             <div className="addNewTask">
-                <button onClick={popUp}>+</button>
+                <button className="openModal" onClick={popUp}>Nova Task</button>
 
                 <div id="show" className="modalContainer">
                     <div className="modal">

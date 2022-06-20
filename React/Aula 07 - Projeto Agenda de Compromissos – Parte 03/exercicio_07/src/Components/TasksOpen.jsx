@@ -3,16 +3,19 @@ function TasksOpen({ task, onToggle, onDelete }) {
         <div>
             <h2>tasksOpen</h2>
 
-            <ul>
+            <div className="listContainer">
                 {task.map((task) => (
-                    <div key={task.id}>
-                        <p>{task.task}</p>
-                        <p>{task.date}</p>
-                        <button onClick={() => onToggle(task.id)}>-</button>
-                        <button onClick={() => onDelete(task.id)}>X</button>
+                    <div className="list" key={task.id}>
+                        <p className="listItem">{task.task}</p>
+                        <p className="listItem">{task.date}</p>
+                        
+                        <div className="listItem listButton">
+                            <button className="btnList changeBtn" onClick={() => onToggle(task.id)}>V</button>
+                            <button className="btnList deleteBtn" id="deleteItemBtn" onClick={() => onDelete(task.id)}>X</button>
+                        </div>
                     </div>
                 ))}
-            </ul>
+            </div>
         </div>
     );
 }

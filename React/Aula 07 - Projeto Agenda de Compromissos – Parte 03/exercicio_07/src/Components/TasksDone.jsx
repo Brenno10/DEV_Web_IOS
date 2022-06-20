@@ -1,18 +1,21 @@
 function TasksDone({ task, onToggle, onDelete }) {
     return (
-        <div>
+        <div style={{marginBottom: '7rem'}}>
             <h2>tasksDone</h2>
 
-            <ul>
+            <div className="listContainer">
                 {task.map((task) => (
-                    <div key={task.id}>
-                        <p>{task.task}</p>
-                        <p>{task.date}</p>
-                        <button onClick={() => onToggle(task.id)}>-</button>
-                        <button onClick={() => onDelete(task.id)}>X</button>
+                    <div className="list" key={task.id}>
+                        <p className="listItem">{task.task}</p>
+                        <p className="listItem">{task.date}</p>
+                        
+                        <div className="listItem listButton">
+                            <button className="btnList changeBtn" onClick={() => onToggle(task.id)}><p className="invertedFont">V</p></button>
+                            <button className="btnList deleteBtn" onClick={() => onDelete(task.id)}>X</button>
+                        </div>
                     </div>
                 ))}
-            </ul>
+            </div>
         </div>
     );
 }

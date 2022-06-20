@@ -8,7 +8,7 @@ html, body
 
 .container {
     display: grid;
-    justify-content: center;
+    justify-content: space-around;
     margin: 0 auto;
     border: 1px solid black;
     width: 600px;
@@ -16,6 +16,7 @@ html, body
 
 .addNewTask {
     flex: content;
+    text-align: center;
 }
 
 /* container do modal e plano de fundo */
@@ -93,8 +94,67 @@ html, body
     color: crimson;
 }
 
-ul {
+/* configuração flexbox das listas de tarefas */
+.listContainer {
     display: flex;
     flex-direction: column;
     border: 1px solid black;
+    max-width: 345px;
+    border-radius: 25px;
+    overflow: hidden;
+}
+
+.list {
+    display: flex;
+    border-bottom: 1px solid black;
+}
+
+.listItem {
+    width: 100%;
+    text-align: center;
+    overflow: hidden;
+}
+
+.listButton {
+    display: flex;
+    border-left: 1px solid black;
+}
+
+.btnList {
+    flex-grow: 1;
+    border: 0;
+    color: aliceblue;
+}
+
+.changeBtn {
+    background-color: darkslateblue;
+}
+
+.deleteBtn {
+    background-color: crimson;
+}
+
+.deleteBtn:hover, .changeBtn:hover {
+    opacity: .9;
+    transform: scale(.95);
+    cursor: pointer;
+}
+
+.invertedFont {
+    transform: rotate(180deg);
+}
+
+.openModal {
+    border: 0;
+    background-color: darkgreen;
+    color: aliceblue;
+    padding: 10px 30px;
+    border-radius: 25px;
+    font-size: 1.3em;
+}
+
+.openModal:hover {
+    opacity: .9;
+    transform: scale(.98);
+    cursor: pointer;
 }
