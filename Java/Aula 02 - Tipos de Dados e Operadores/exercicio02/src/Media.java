@@ -1,3 +1,4 @@
+// Oracle OpenJDK 18 required
 import java.util.ArrayList;
 import java.util.Scanner;
 
