@@ -8,7 +8,7 @@ public class MultTable {
         System.out.println( "\nDigite o número para ser multiplicado" );
         int base = input.nextInt();
 
-        System.out.println( "Tabuada do " + base );
+        System.out.println( "\nTabuada do " + base );
         if ( base == 0 ) {
             System.out.println( "Todo número multiplicado por 0 é 0" );
         }
@@ -20,5 +20,7 @@ public class MultTable {
                 toMult++;
             } while (toMult <= 10);
         }
+
+        toMult = 1;
     }
 }

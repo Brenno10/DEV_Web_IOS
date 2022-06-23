@@ -12,5 +12,7 @@ public class Counter {
             }
             count++;
         }
+
+        count = 100;
     }
 }
