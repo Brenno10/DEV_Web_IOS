@@ -39,6 +39,6 @@ public class SmallestNumber {
         // reseta tudo para que possão ser reútilizados
         isEqual.clear();
         i = 0;
-        smallest = 0;
+        smallest = 2147483647;
     }
 }
