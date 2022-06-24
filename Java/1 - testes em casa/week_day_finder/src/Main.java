@@ -22,10 +22,16 @@ public class Main {
         int year = input.nextInt();
         globalYear = year;
 
-        System.out.println(
-                "\nO dia da semana de " + day + " de " + getMonth( month ) + " de " + year + " é " +
-                        getWeekDay( day, month, getLastTwo( year ) )
-        );
+        // o ano 0 não existe
+        if ( year != 0 ) {
+            System.out.println(
+                    "\nO dia da semana de " + day + " de " + getMonth(month) + " de " + year + " é " +
+                            getWeekDay(day, month, getLastTwo(year))
+            );
+        }
+        else {
+            System.out.println( "O ano 0 não existe!" );
+        }
 
         input.close();
     }
@@ -55,18 +61,26 @@ public class Main {
             case 5, 11, 16, 22, 33, 39, 44, 50, 61, 67, 72, 78, 89, 95 -> key = 6;
         }
 
-        // condições de séculos D.C.
-        // 4 grupos que pulam 400
-        
-        // 1° - ( key - 1 = [ ..., -400, 000, 400, 800, 1200, 1600, 2000, ... ]
-        // 2° - ( key - 3 = [ ..., -300, 100, 500, 900, 1300, 1700, 2100, ... ]
-        // 3° - ( key + 2 = [ ..., -200, 200, 600, 1000, 1400, 1800, 2200, ... ]
-        // 4° - ( key + 0 = [ ..., -100, 300, 700, 1100, 1500, 1900, 2300, ... ]
-
+        //
         if ( ( globalYear >= 100 && globalYear < 200 ) || ( globalYear >= 500 && globalYear < 600 ) || ( globalYear >= 900 && globalYear < 1000 ) ) return key - 3;
         else if ( ( globalYear >= 200 && globalYear < 300 ) || ( globalYear >= 600 && globalYear < 700 ) || ( globalYear >= 1000 && globalYear < 1100 ) ) return key + 2;
         else if ( ( globalYear >= 400 && globalYear < 500 ) || ( globalYear >= 800 && globalYear < 900 ) || ( globalYear >= 2000 && globalYear < 2100 ) ) return key - 1;
-        return key;
+        //
+
+        switch ( getKeyGroup( globalYear ) ) {
+            case 1 -> {
+                return key - 1;
+            }
+            case 2 -> {
+                return key - 3;
+            }
+            case 3 -> {
+                return key + 2;
+            }
+            default -> {
+                return key;
+            }
+        }
     }
 
     // pega a chave do mês para o calculo final
@@ -86,6 +100,30 @@ public class Main {
             }
         }
         return key;
+    }
+
+    // verifica o grupo do ano
+    private static int getKeyGroup( int year ) {
+        // 4 grupos de 0 a 99 que pulam 400
+        // ex: 2° grupo
+        // [..., [-300, -299, -298, -297, ..., -201], [100, 101, 102, 103, ..., 199], [500, 501, 502, 503, ..., 599], ...]
+
+        // * ( o ano 0 não existe, então seria 001 ao inves de 000 );
+        // 1° - ( key - 1 = [ ..., -400, 000*, 400, 800, 1200, 1600, 2000, ... ]
+        // 2° - ( key - 3 = [ ..., -300, 100, 500,  900, 1300, 1700, 2100, ... ]
+        // 3° - ( key + 2 = [ ..., -200, 200, 600, 1000, 1400, 1800, 2200, ... ]
+        // 4° - ( key + 0 = [ ..., -100, 300, 700, 1100, 1500, 1900, 2300, ... ]
+
+        int group = 0;
+
+        if ( year < 0 ) {
+
+        }
+        else {
+
+        }
+
+        return group;
     }
 
     // pega o nome do mês
