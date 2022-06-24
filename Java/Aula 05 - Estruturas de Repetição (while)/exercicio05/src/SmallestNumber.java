@@ -5,7 +5,7 @@ public class SmallestNumber {
     private static Scanner input = new Scanner( System.in );
     private static int smallest = 2147483647;
     private static int i = 0;
-    private static ArrayList<Integer> isEqual = new ArrayList<Integer>();
+    private static ArrayList<Integer> isEqual = new ArrayList<>();
 
     // verifica se todos os elementos do array isEqual são iguais
     private static boolean ifIsAllEqual() {
