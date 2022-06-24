@@ -23,7 +23,7 @@ public class Main {
         globalYear = year;
 
         System.out.println(
-                "O dia da semana de " + day + " de " + getMonth( month ) + " de " + year + " é " +
+                "\nO dia da semana de " + day + " de " + getMonth( month ) + " de " + year + " é " +
                         getWeekDay( day, month, getLastTwo( year ) )
         );
 
@@ -55,7 +55,17 @@ public class Main {
             case 5, 11, 16, 22, 33, 39, 44, 50, 61, 67, 72, 78, 89, 95 -> key = 6;
         }
 
-        if ( globalYear >= 2000 ) return key - 1;
+        // condições de séculos D.C.
+        // 4 grupos que pulam 400
+        
+        // 1° - ( key - 1 = [ ..., -400, 000, 400, 800, 1200, 1600, 2000, ... ]
+        // 2° - ( key - 3 = [ ..., -300, 100, 500, 900, 1300, 1700, 2100, ... ]
+        // 3° - ( key + 2 = [ ..., -200, 200, 600, 1000, 1400, 1800, 2200, ... ]
+        // 4° - ( key + 0 = [ ..., -100, 300, 700, 1100, 1500, 1900, 2300, ... ]
+
+        if ( ( globalYear >= 100 && globalYear < 200 ) || ( globalYear >= 500 && globalYear < 600 ) || ( globalYear >= 900 && globalYear < 1000 ) ) return key - 3;
+        else if ( ( globalYear >= 200 && globalYear < 300 ) || ( globalYear >= 600 && globalYear < 700 ) || ( globalYear >= 1000 && globalYear < 1100 ) ) return key + 2;
+        else if ( ( globalYear >= 400 && globalYear < 500 ) || ( globalYear >= 800 && globalYear < 900 ) || ( globalYear >= 2000 && globalYear < 2100 ) ) return key - 1;
         return key;
     }
 
@@ -113,9 +123,18 @@ public class Main {
         // converte a string para um array inteiro
         int[] yearArr = yearStr.chars().map(c -> Character.getNumericValue((char) c)).toArray();
 
-        // junta os 2 ultimos números do yearArr[] em string
-        String n = String.valueOf( yearArr[2] ) + String.valueOf( yearArr[3] );
+        if ( yearArr.length >= 4 ) {
+            // junta os 2 ultimos números do yearArr[] em string
+            String n = String.valueOf(yearArr[2]) + String.valueOf(yearArr[3]);
 
-        return Integer.parseInt( n ); // converte a string "n" de volta para int
+            return Integer.parseInt( n ); // converte a string "n" de volta para int
+        } else if ( yearArr.length == 3 ) {
+            // junta os 2 ultimos números do yearArr[] em string
+            String n = String.valueOf(yearArr[1]) + String.valueOf(yearArr[2]);
+
+            return Integer.parseInt( n ); // converte a string "n" de volta para int
+        }
+
+        return year;
     }
 }
