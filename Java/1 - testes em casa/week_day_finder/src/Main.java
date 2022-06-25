@@ -2,13 +2,12 @@ import java.util.Scanner;
 
 public class Main {
     private static Scanner input = new Scanner( System.in );
+    private static int globalYear;
     private static final String[] allWeekDays =
             { "sábado", "domingo", "segunda", "terça", "quarta", "quinta", "sexta" };
-    private static final String[] allMonths = {
-            "janeiro", "fevereiro", "março", "abril", "maio", "junho",
-            "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"
-    };
-    private static int globalYear;
+    private static final String[] allMonths =
+            { "janeiro", "fevereiro", "março", "abril", "maio", "junho",
+              "julho", "agosto", "setembro", "outubro", "novembro", "dezembro" };
 
     public static void main( String[] args ) {
         System.out.println( "\nEncontre o dia da semana da data indicada" );
@@ -22,15 +21,14 @@ public class Main {
         int year = input.nextInt();
         globalYear = year;
 
-        // o ano 0 não existe
         if ( year != 0 ) {
             System.out.println(
-                    "\nO dia da semana de " + day + " de " + getMonth(month) + " de " + year + " é " +
-                            getWeekDay(day, month, getLastTwo(year))
+                    "\nO dia da semana de " + day + " de " + getMonth( month ) + " de " + year + " é " +
+                            getWeekDay( day, month, getLastTwo( year ) )
             );
         }
         else {
-            System.out.println( "O ano 0 não existe!" );
+            System.out.println( "\nO ano 0 não existe!" );
         }
 
         input.close();
@@ -42,8 +40,8 @@ public class Main {
         int calc = day + monthKey( month ) + yearKey( year );
         int weekDay = calc - highestMultipleOf( 7, calc );
 
-        if ( ( month == 1 || month == 2 ) && isLeapYear( globalYear ) ) return allWeekDays[weekDay - 1];
-        return allWeekDays[weekDay];
+        if ( ( month == 1 || month == 2 ) && isLeapYear( globalYear ) ) return allWeekDays[ weekDay - 1 ];
+        return allWeekDays[ weekDay ];
     }
 
     // pega a chave do ano para o calculo final
@@ -98,16 +96,10 @@ public class Main {
 
     // verifica o grupo do ano
     private static int getKeyGroup( int year ) {
-        // * ( o ano 0 não existe, então seria 001 ao inves de 000 );
-        // 1° - ( key - 1 = [ ..., -400, 000*, 400, 800, 1200, 1600, 2000, ... ]
-        // 2° - ( key - 3 = [ ..., -300, 100, 500,  900, 1300, 1700, 2100, ... ]
-        // 3° - ( key + 2 = [ ..., -200, 200, 600, 1000, 1400, 1800, 2200, ... ]
-        // 4° - ( key + 0 = [ ..., -100, 300, 700, 1100, 1500, 1900, 2300, ... ]
-
         int group = 1;
         int multipleOf100 = highestMultipleOf( 100, globalYear );
 
-        if ( globalYear > 0 ) {
+        if ( globalYear >= 100 ) {
             if ( ( multipleOf100 + 300 ) % 400 == 0 ) {
                 group = 2;
             }
@@ -118,10 +110,9 @@ public class Main {
                 group = 4;
             }
         }
-        else if ( globalYear < 0 ) {
-
+        else if ( globalYear > 0 && globalYear < 100 ) {
+            group = 4;
         }
-
         return group;
     }
 
