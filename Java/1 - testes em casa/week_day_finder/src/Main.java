@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Main {
     private static Scanner input = new Scanner( System.in );
     private static final String[] allWeekDays =
-            { "sabado", "domingo", "segunda", "terça", "quarta", "quinta", "sexta" };
+            { "sábado", "domingo", "segunda", "terça", "quarta", "quinta", "sexta" };
     private static final String[] allMonths = {
             "janeiro", "fevereiro", "março", "abril", "maio", "junho",
             "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"
@@ -61,12 +61,6 @@ public class Main {
             case 5, 11, 16, 22, 33, 39, 44, 50, 61, 67, 72, 78, 89, 95 -> key = 6;
         }
 
-        //
-        if ( ( globalYear >= 100 && globalYear < 200 ) || ( globalYear >= 500 && globalYear < 600 ) || ( globalYear >= 900 && globalYear < 1000 ) ) return key - 3;
-        else if ( ( globalYear >= 200 && globalYear < 300 ) || ( globalYear >= 600 && globalYear < 700 ) || ( globalYear >= 1000 && globalYear < 1100 ) ) return key + 2;
-        else if ( ( globalYear >= 400 && globalYear < 500 ) || ( globalYear >= 800 && globalYear < 900 ) || ( globalYear >= 2000 && globalYear < 2100 ) ) return key - 1;
-        //
-
         switch ( getKeyGroup( globalYear ) ) {
             case 1 -> {
                 return key - 1;
@@ -104,27 +98,27 @@ public class Main {
 
     // verifica o grupo do ano
     private static int getKeyGroup( int year ) {
-        // 4 grupos de 0 a 99 que pulam 400
-        // ex: 2° grupo
-        // [
-        //     ...,
-        //     [100, 101, 102, 103, ..., 199],
-        //     [500, 501, 502, 503, ..., 599],
-        //     ...
-        // ]
-
         // * ( o ano 0 não existe, então seria 001 ao inves de 000 );
         // 1° - ( key - 1 = [ ..., -400, 000*, 400, 800, 1200, 1600, 2000, ... ]
         // 2° - ( key - 3 = [ ..., -300, 100, 500,  900, 1300, 1700, 2100, ... ]
         // 3° - ( key + 2 = [ ..., -200, 200, 600, 1000, 1400, 1800, 2200, ... ]
         // 4° - ( key + 0 = [ ..., -100, 300, 700, 1100, 1500, 1900, 2300, ... ]
 
-        int group = 0;
+        int group = 1;
+        int multipleOf100 = highestMultipleOf( 100, globalYear );
 
-        if ( year < 0 ) {
-
+        if ( globalYear > 0 ) {
+            if ( ( multipleOf100 + 300 ) % 400 == 0 ) {
+                group = 2;
+            }
+            else if ( ( multipleOf100 + 200 ) % 400 == 0 ) {
+                group = 3;
+            }
+            else if ( ( multipleOf100 + 100 ) % 400 == 0 ) {
+                group = 4;
+            }
         }
-        else {
+        else if ( globalYear < 0 ) {
 
         }
 
@@ -168,16 +162,15 @@ public class Main {
 
         if ( yearArr.length >= 4 ) {
             // junta os 2 ultimos números do yearArr[] em string
-            String n = String.valueOf(yearArr[2]) + String.valueOf(yearArr[3]);
+            String n = yearArr[2] + String.valueOf(yearArr[3]);
 
             return Integer.parseInt( n ); // converte a string "n" de volta para int
         } else if ( yearArr.length == 3 ) {
             // junta os 2 ultimos números do yearArr[] em string
-            String n = String.valueOf(yearArr[1]) + String.valueOf(yearArr[2]);
+            String n = yearArr[1] + String.valueOf(yearArr[2]);
 
             return Integer.parseInt( n ); // converte a string "n" de volta para int
         }
-
         return year;
     }
 }
