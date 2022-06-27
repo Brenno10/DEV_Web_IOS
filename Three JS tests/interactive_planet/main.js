@@ -18,11 +18,14 @@ const camera = new THREE.PerspectiveCamera(
 );
 
 // criando renderização
-const renderer = new THREE.WebGLRenderer({ antialias: true }); // antialias remove bordas irregulares
-renderer.setSize(innerWidth, innerHeight);
+const renderer = new THREE.WebGLRenderer({
+    antialias: true, // antialias remove bordas irregulares
+    canvas: document.querySelector('canvas'),
+});
+
+const canvasContainer = document.querySelector('#canvasContainer'); // é nescessário usar querySeclector
+renderer.setSize(canvasContainer.offsetWidth, canvasContainer.offsetHeight);
 renderer.setPixelRatio(window.devicePixelRatio);
-// renderer.setAnimationLoop(animation); // substituto para requestAnimationFrame()
-document.body.appendChild(renderer.domElement);
 
 // criando objeto e o adicionando a cena
 const earth = new THREE.Mesh(
@@ -58,6 +61,27 @@ const group = new THREE.Group();
 group.add(earth);
 scene.add(group);
 
+// criando estrelas e as adicionando a cena
+const starGeometry = new THREE.BufferGeometry();
+const starMaterial = new THREE.PointsMaterial({
+    color: 0xffffff,
+});
+// posiciona estrelas em posições aleatórias
+const starVertices = [];
+for (let i = 0; i < 10000; i++) {
+    const x = (Math.random() - 0.5) * 2000;
+    const y = (Math.random() - 0.5) * 2000;
+    const z = (Math.random() - 0.5) * 2000;
+    starVertices.push(x, y, z);
+}
+starGeometry.setAttribute(
+    'position',
+    new THREE.Float32BufferAttribute(starVertices, 3)
+);
+const stars = new THREE.Points(starGeometry, starMaterial);
+scene.add(stars);
+
+// posição da câmera
 camera.position.z = 15;
 
 // detecta a posição do mouse
@@ -70,12 +94,12 @@ addEventListener('mousemove', (event) => {
     mouse.y = (-event.clientY / innerHeight) * 2 + 1;
 });
 
-//
-
 // animação
-function animation(time) {
+function animation() {
     requestAnimationFrame(animation);
     earth.rotation.y += 0.003;
+    stars.rotation.x += 0.001;
+    stars.rotation.y += 0.001;
 
     gsap.to(group.rotation, {
         y: mouse.x,
