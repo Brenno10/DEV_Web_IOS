@@ -2,8 +2,6 @@
 import * as THREE from 'https://unpkg.com/three/build/three.module.js';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
-import gsap from 'gsap'; // biblioteca de animações gsap
-
 import vertexShader from './assets/shaders/vertex.glsl';
 import fragmentShader from './assets/shaders/fragment.glsl';
 
@@ -16,7 +14,7 @@ const camera = new THREE.PerspectiveCamera(
     75,
     innerWidth / innerHeight,
     0.01,
-    1000
+    10000
 );
 
 // criando renderização
@@ -71,11 +69,12 @@ const starMaterial = new THREE.PointsMaterial({
 // posiciona estrelas em posições aleatórias
 const starVertices = [];
 for (let i = 0; i < 10000; i++) {
-    const x = (Math.random() - 0.5) * 2000;
-    const y = (Math.random() - 0.5) * 2000;
-    const z = (Math.random() - 0.5) * 2000;
+    const x = (Math.random() - 0.5) * 4000;
+    const y = (Math.random() - 0.5) * 4000;
+    const z = (Math.random() - 0.5) * 4000;
     starVertices.push(x, y, z);
 }
+console.log(starVertices);
 starGeometry.setAttribute(
     'position',
     new THREE.Float32BufferAttribute(starVertices, 3)
@@ -105,6 +104,8 @@ addEventListener('mousemove', (event) => {
 function animation() {
     requestAnimationFrame(animation);
     earth.rotation.y += 0.001;
+    stars.rotation.y += 0.00001;
+    stars.rotation.x += 0.00001;
     controls.update();
 
     renderer.render(scene, camera);
