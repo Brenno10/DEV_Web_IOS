@@ -12,6 +12,7 @@
     "vite-plugin-string": "^1.1.2"
   },
   "dependencies": {
-    "gsap": "^3.10.4"
+    "gsap": "^3.10.4",
+    "three-orbitcontrols": "^2.110.3"
   }
 }

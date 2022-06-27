@@ -1,5 +1,7 @@
 // import * as THREE from 'three';
 import * as THREE from 'https://unpkg.com/three/build/three.module.js';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+
 import gsap from 'gsap'; // biblioteca de animações gsap
 
 import vertexShader from './assets/shaders/vertex.glsl';
@@ -24,7 +26,7 @@ const renderer = new THREE.WebGLRenderer({
 });
 
 const canvasContainer = document.querySelector('#canvasContainer'); // é nescessário usar querySeclector
-renderer.setSize(canvasContainer.offsetWidth, canvasContainer.offsetHeight);
+renderer.setSize(innerWidth, innerHeight);
 renderer.setPixelRatio(window.devicePixelRatio);
 
 // criando objeto e o adicionando a cena
@@ -81,8 +83,13 @@ starGeometry.setAttribute(
 const stars = new THREE.Points(starGeometry, starMaterial);
 scene.add(stars);
 
+// mconfigurando orbit controls
+const controls = new OrbitControls(camera, document.querySelector('canvas'));
+controls.enableDamping = true;
+controls.dampingFactor = 0.05;
+
 // posição da câmera
-camera.position.z = 15;
+camera.position.z = 20;
 
 // detecta a posição do mouse
 const mouse = {
@@ -97,15 +104,8 @@ addEventListener('mousemove', (event) => {
 // animação
 function animation() {
     requestAnimationFrame(animation);
-    earth.rotation.y += 0.003;
-    stars.rotation.x += 0.001;
-    stars.rotation.y += 0.001;
-
-    gsap.to(group.rotation, {
-        y: mouse.x,
-        x: -mouse.y,
-        duration: 1.5,
-    });
+    earth.rotation.y += 0.001;
+    controls.update();
 
     renderer.render(scene, camera);
 }
