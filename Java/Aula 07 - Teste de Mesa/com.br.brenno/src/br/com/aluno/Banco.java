@@ -10,7 +10,6 @@ public class Banco {
         System.out.println( "\nBem vindo ao -- Internet Banking!" );
         accountOptions();
         choseAgain();
-
         input.close();
     }
 

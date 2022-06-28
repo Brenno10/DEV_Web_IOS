@@ -23,7 +23,7 @@ const renderer = new THREE.WebGLRenderer({
     canvas: document.querySelector('canvas'),
 });
 
-const canvasContainer = document.querySelector('#canvasContainer'); // é nescessário usar querySeclector
+document.querySelector('#canvasContainer'); // é nescessário usar querySeclector
 renderer.setSize(innerWidth, innerHeight);
 renderer.setPixelRatio(window.devicePixelRatio);
 
@@ -69,12 +69,11 @@ const starMaterial = new THREE.PointsMaterial({
 // posiciona estrelas em posições aleatórias
 const starVertices = [];
 for (let i = 0; i < 10000; i++) {
-    const x = (Math.random() - 0.5) * 4000;
-    const y = (Math.random() - 0.5) * 4000;
-    const z = (Math.random() - 0.5) * 4000;
+    const x = (Math.random() - 0.5) * 5500;
+    const y = (Math.random() - 0.5) * 5500;
+    const z = (Math.random() - 0.5) * 5500;
     starVertices.push(x, y, z);
 }
-console.log(starVertices);
 starGeometry.setAttribute(
     'position',
     new THREE.Float32BufferAttribute(starVertices, 3)
@@ -103,9 +102,9 @@ addEventListener('mousemove', (event) => {
 // animação
 function animation() {
     requestAnimationFrame(animation);
-    earth.rotation.y += 0.001;
-    stars.rotation.y += 0.00001;
-    stars.rotation.x += 0.00001;
+    earth.rotation.y += 0.0005;
+    stars.rotation.y += -0.00002;
+    stars.rotation.x += -0.00002;
     controls.update();
 
     renderer.render(scene, camera);
