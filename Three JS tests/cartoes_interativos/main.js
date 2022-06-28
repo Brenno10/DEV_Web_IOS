@@ -3,7 +3,6 @@ import { Group } from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
-import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass.js';
 import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass.js';
 
 // cena e câmera
@@ -34,11 +33,10 @@ const bloomPass = new UnrealBloomPass(
     0,
     0
 );
-const effectComposer = new EffectComposer(renderizador);
-effectComposer.setSize(innerWidth, innerHeight);
-effectComposer.renderToScreen = true;
-effectComposer.addPass(renderizarCena);
-effectComposer.addPass(bloomPass);
+const compositorDeEfeito = new EffectComposer(renderizador);
+compositorDeEfeito.setSize(innerWidth, innerHeight);
+compositorDeEfeito.addPass(renderizarCena);
+compositorDeEfeito.addPass(bloomPass);
 
 // sol
 const sol = new THREE.Mesh(
@@ -60,9 +58,7 @@ const terra = new THREE.Mesh(
 
 // estrelas
 const geometriaDaEstrela = new THREE.BufferGeometry();
-const materialDaEstrela = new THREE.PointsMaterial({
-    color: 0xffffff,
-});
+const materialDaEstrela = new THREE.PointsMaterial({ color: 0xffffff });
 const verticesDaEstrela = [];
 for (let i = 0; i < 10000; i++) {
     const x = (Math.random() - 0.5) * 6000;
@@ -93,29 +89,32 @@ function redimensionar() {
 // grupos
 const grupoTerra = new THREE.Group();
 grupoTerra.add(terra);
-
 const grupoSol = new Group();
 grupoSol.add(sol);
 
-// adicionando na cena
+// adicionar na cena
 cena.add(estrelas);
 cena.add(grupoSol);
 cena.add(grupoTerra);
 
 // posições iniciais
-camera.position.z = 400;
+camera.position.set(0, 0, 400);
+camera.lookAt(sol);
+grupoSol.position.set(0, 0, 0);
 grupoTerra.position.set(200, 0, 100);
 
 // animações
 function animacao() {
     requestAnimationFrame(animacao);
-    grupoTerra.rotation.y += 0.0005;
-    grupoSol.rotation.y += 0.0002;
-    grupoSol.rotation.x += 0.0002;
     estrelas.rotation.x += 0.000005;
     estrelas.rotation.y += 0.000005;
 
+    grupoSol.rotation.y += 0.0002;
+    grupoSol.rotation.x += 0.0002;
+
+    grupoTerra.rotation.y += 0.0005;
+
     controles.update();
-    effectComposer.render();
+    compositorDeEfeito.render();
 }
 animacao();
