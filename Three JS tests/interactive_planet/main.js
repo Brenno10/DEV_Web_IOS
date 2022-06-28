@@ -1,33 +1,37 @@
 // import * as THREE from 'three';
 import * as THREE from 'https://unpkg.com/three/build/three.module.js';
+
+// bibliotecas adicionais
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
+// arquivos de sombra
 import vertexShader from './assets/shaders/vertex.glsl';
 import fragmentShader from './assets/shaders/fragment.glsl';
-
 import atmosphereVertexShader from './assets/shaders/atmosphereVertex.glsl';
 import atmosphereFragmentShader from './assets/shaders/atmosphereFragment.glsl';
 
-// criando câmera e cena
+//
+// criando cena e câmera
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(
-    75,
-    innerWidth / innerHeight,
-    0.01,
-    10000
+    75, // fov = campo de visão
+    innerWidth / innerHeight, // aspect = tamanho da câmera
+    0.01, // near = distância mínima de renderização
+    10000 // far = distância máxima de renderização
 );
 
-// criando renderização
+//
+// criando renderizador
 const renderer = new THREE.WebGLRenderer({
     antialias: true, // antialias remove bordas irregulares
     canvas: document.querySelector('canvas'),
 });
-
 document.querySelector('#canvasContainer'); // é nescessário usar querySeclector
 renderer.setSize(innerWidth, innerHeight);
 renderer.setPixelRatio(window.devicePixelRatio);
 
-// criando objeto e o adicionando a cena
+//
+// criando a terra
 const earth = new THREE.Mesh(
     new THREE.SphereGeometry(5, 50, 50),
     new THREE.ShaderMaterial({
@@ -42,9 +46,9 @@ const earth = new THREE.Mesh(
         },
     })
 );
-scene.add(earth);
 
-// criando atmosféra
+//
+// criando efeito de atmosféra
 const atmosphere = new THREE.Mesh(
     new THREE.SphereGeometry(5, 50, 50),
     new THREE.ShaderMaterial({
@@ -55,23 +59,18 @@ const atmosphere = new THREE.Mesh(
     })
 );
 atmosphere.scale.set(1.1, 1.1, 1.1);
-scene.add(atmosphere);
 
-const group = new THREE.Group();
-group.add(earth);
-scene.add(group);
-
-// criando estrelas e as adicionando a cena
+//
+// criando estrelas em posições aleatórias na cena
 const starGeometry = new THREE.BufferGeometry();
 const starMaterial = new THREE.PointsMaterial({
     color: 0xffffff,
 });
-// posiciona estrelas em posições aleatórias
 const starVertices = [];
 for (let i = 0; i < 10000; i++) {
-    const x = (Math.random() - 0.5) * 5500;
-    const y = (Math.random() - 0.5) * 5500;
-    const z = (Math.random() - 0.5) * 5500;
+    const x = (Math.random() - 0.5) * 6000;
+    const y = (Math.random() - 0.5) * 6000;
+    const z = (Math.random() - 0.5) * 6000;
     starVertices.push(x, y, z);
 }
 starGeometry.setAttribute(
@@ -79,34 +78,49 @@ starGeometry.setAttribute(
     new THREE.Float32BufferAttribute(starVertices, 3)
 );
 const stars = new THREE.Points(starGeometry, starMaterial);
-scene.add(stars);
 
-// mconfigurando orbit controls
+//
+// redimensionador da animação
+window.addEventListener('resize', redimensionar);
+function redimensionar() {
+    camera.aspect = innerWidth / innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(innerWidth, innerHeight);
+    renderer.render(scene, camera);
+}
+
+//
+// configurando orbitControls
 const controls = new OrbitControls(camera, document.querySelector('canvas'));
 controls.enableDamping = true;
 controls.dampingFactor = 0.05;
 
-// posição da câmera
-camera.position.z = 20;
+//
+// agrupando terra e atmosféra
+const earthGroup = new THREE.Group();
+earthGroup.add(earth);
+earthGroup.add(atmosphere);
 
-// detecta a posição do mouse
-const mouse = {
-    x: undefined,
-    y: undefined,
-};
-addEventListener('mousemove', (event) => {
-    mouse.x = (event.clientX / innerWidth) * 2 - 1;
-    mouse.y = (-event.clientY / innerHeight) * 2 + 1;
-});
+//
+// adicionando objetos à cena
+scene.add(earthGroup);
+scene.add(stars);
+
+// posição inicial da câmera
+camera.position.z = 20;
 
 // animação
 function animation() {
     requestAnimationFrame(animation);
-    earth.rotation.y += 0.0005;
-    stars.rotation.y += -0.00002;
-    stars.rotation.x += -0.00002;
-    controls.update();
 
+    // movimento das estrelas
+    stars.rotation.y += -0.000008;
+    stars.rotation.x += -0.000005;
+
+    // movimento da terra
+    earth.rotation.y += 0.0005;
+
+    controls.update(); // faz com que o orbitControls continue sendo renderizado
     renderer.render(scene, camera);
 }
 animation();
