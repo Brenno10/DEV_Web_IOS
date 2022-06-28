@@ -1,8 +1,9 @@
 import * as THREE from 'three';
-import { AmbientLight, Group } from 'three';
+import { Group } from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
+import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass.js';
 import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass.js';
 
 // cena e câmera
@@ -22,30 +23,22 @@ const renderizador = new THREE.WebGLRenderer({
 document.querySelector('#canvasContainer');
 renderizador.autoClear = false;
 renderizador.setSize(innerWidth, innerHeight);
-renderizador.setPixelRatio(
-    window.devicePixelRatio ? window.devicePixelRatio : 1
-);
-renderizador.setClearColor(0x000000, 0.0);
+renderizador.setPixelRatio(window.devicePixelRatio);
+renderizador.toneMapping = THREE.ReinhardToneMapping;
 const renderizarCena = new RenderPass(cena, camera);
 
 // iluminação
 const bloomPass = new UnrealBloomPass(
     new THREE.Vector2(innerWidth, innerHeight),
-    1.5,
-    0.4,
-    0.85
+    2,
+    0,
+    0
 );
-bloomPass.threshold = 0;
-bloomPass.strength = 2;
-bloomPass.radius = 0;
-
-const bloomComposer = new EffectComposer(renderizador);
-bloomComposer.setSize(innerWidth, innerHeight);
-bloomComposer.renderToScreen = true;
-bloomComposer.addPass(renderizarCena);
-bloomComposer.addPass(bloomPass);
-
-const luzAmbiente = new AmbientLight(0xffffff, 0.1);
+const effectComposer = new EffectComposer(renderizador);
+effectComposer.setSize(innerWidth, innerHeight);
+effectComposer.renderToScreen = true;
+effectComposer.addPass(renderizarCena);
+effectComposer.addPass(bloomPass);
 
 // sol
 const sol = new THREE.Mesh(
@@ -95,7 +88,6 @@ function redimensionar() {
     camera.updateProjectionMatrix();
     renderizador.setSize(innerWidth, innerHeight);
     renderizador.render(cena, camera);
-    bloomComposer.setSize(innerWidth, innerHeight);
 }
 
 // grupos
@@ -108,7 +100,6 @@ grupoSol.add(sol);
 // adicionando na cena
 cena.add(estrelas);
 cena.add(grupoSol);
-cena.add(luzAmbiente);
 cena.add(grupoTerra);
 
 // posições iniciais
@@ -119,10 +110,12 @@ grupoTerra.position.set(200, 0, 100);
 function animacao() {
     requestAnimationFrame(animacao);
     grupoTerra.rotation.y += 0.0005;
+    grupoSol.rotation.y += 0.0002;
+    grupoSol.rotation.x += 0.0002;
     estrelas.rotation.x += 0.000005;
     estrelas.rotation.y += 0.000005;
 
     controles.update();
-    bloomComposer.render();
+    effectComposer.render();
 }
 animacao();
