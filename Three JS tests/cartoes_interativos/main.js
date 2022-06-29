@@ -1,5 +1,4 @@
 import * as THREE from 'three';
-import { Group } from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
@@ -12,7 +11,7 @@ const camera = new THREE.PerspectiveCamera(
     60,
     innerWidth / innerHeight,
     0.01,
-    10000
+    35000
 );
 
 // renderizador
@@ -28,30 +27,45 @@ renderizador.toneMapping = THREE.ReinhardToneMapping;
 const renderizarCena = new RenderPass(cena, camera);
 
 // iluminação
+const luzAmbiente = new THREE.AmbientLight(0xffffff, 0.015);
+const luzDoSol = new THREE.PointLight(0xffffff, 6, 10000);
+const luzDoSolHelper = new THREE.PointLightHelper(luzDoSol, 1);
 const bloomPass = new UnrealBloomPass(
     new THREE.Vector2(innerWidth, innerHeight),
-    2,
+    0.4,
     0,
     0
 );
-const effectComposer = new EffectComposer(renderizador);
-effectComposer.setSize(innerWidth, innerHeight);
-effectComposer.renderToScreen = true;
-effectComposer.addPass(renderizarCena);
-effectComposer.addPass(bloomPass);
+const compositorDeEfeito = new EffectComposer(renderizador);
+compositorDeEfeito.setSize(innerWidth, innerHeight);
+compositorDeEfeito.addPass(renderizarCena);
+compositorDeEfeito.addPass(bloomPass);
 
-// sol
+const customMaterialAtimosphere = new THREE.ShaderMaterial({
+    uniforms: {
+        c: { type: 'f', value: 0.5 },
+        p: { type: 'f', value: 0.4 },
+        vertexShader: document.getElementById('vertexShaderAtmosphere'),
+        fragmentShader: document.getElementById('fragmentShaderAtmosphere'),
+    },
+});
+const atmosphere = new THREE.Mesh(
+    new THREE.SphereGeometry(100, 50, 50),
+    customMaterialAtimosphere
+);
+atmosphere.scale.x = atmosphere.scale.y = atmosphere.scale.z = 1.2;
+atmosphere.material.side = THREE.BackSide;
+
+// planetas
 const sol = new THREE.Mesh(
-    new THREE.SphereGeometry(100, 100, 100),
-    new THREE.MeshBasicMaterial({
+    new THREE.SphereGeometry(100, 50, 50),
+    new THREE.MeshLambertMaterial({
         map: new THREE.TextureLoader().load('./assets/textures/sun.jpg'),
     })
 );
-
-// terra
 const terra = new THREE.Mesh(
     new THREE.SphereGeometry(5, 50, 50),
-    new THREE.MeshBasicMaterial({
+    new THREE.MeshLambertMaterial({
         map: new THREE.TextureLoader().load(
             './assets/textures/hd_earth_texture.jpg'
         ),
@@ -65,9 +79,9 @@ const materialDaEstrela = new THREE.PointsMaterial({
 });
 const verticesDaEstrela = [];
 for (let i = 0; i < 10000; i++) {
-    const x = (Math.random() - 0.5) * 6000;
-    const y = (Math.random() - 0.5) * 6000;
-    const z = (Math.random() - 0.5) * 6000;
+    const x = (Math.random() - 0.5) * 60000;
+    const y = (Math.random() - 0.5) * 60000;
+    const z = (Math.random() - 0.5) * 60000;
     verticesDaEstrela.push(x, y, z);
 }
 geometriaDaEstrela.setAttribute(
@@ -94,17 +108,22 @@ function redimensionar() {
 const grupoTerra = new THREE.Group();
 grupoTerra.add(terra);
 
-const grupoSol = new Group();
+const grupoSol = new THREE.Group();
 grupoSol.add(sol);
+grupoSol.add(atmosphere);
+grupoSol.add(luzDoSol);
+grupoSol.add(luzDoSolHelper);
 
 // adicionando na cena
+cena.add(luzAmbiente);
 cena.add(estrelas);
 cena.add(grupoSol);
 cena.add(grupoTerra);
 
 // posições iniciais
-camera.position.z = 400;
-grupoTerra.position.set(200, 0, 100);
+camera.position.set(0, 0, 400);
+grupoTerra.position.set(200, 0, 0);
+grupoSol.position.set(0, 0, 0);
 
 // animações
 function animacao() {
@@ -112,10 +131,10 @@ function animacao() {
     grupoTerra.rotation.y += 0.0005;
     grupoSol.rotation.y += 0.0002;
     grupoSol.rotation.x += 0.0002;
-    estrelas.rotation.x += 0.000005;
-    estrelas.rotation.y += 0.000005;
+    estrelas.rotation.x += 0.000001;
+    estrelas.rotation.y += 0.000001;
 
     controles.update();
-    effectComposer.render();
+    compositorDeEfeito.render();
 }
 animacao();
