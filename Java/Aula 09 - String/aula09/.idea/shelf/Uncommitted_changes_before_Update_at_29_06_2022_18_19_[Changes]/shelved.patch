@@ -1,0 +1,86 @@
+Index: ../../../Three JS tests/cartoes_interativos/main.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import * as THREE from 'three';\r\nimport { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';\r\nimport { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';\r\nimport { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';\r\nimport { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass.js';\r\nimport { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass.js';\r\n\r\n// cena e câmera\r\nconst cena = new THREE.Scene();\r\nconst camera = new THREE.PerspectiveCamera(\r\n    60,\r\n    innerWidth / innerHeight,\r\n    0.01,\r\n    35000\r\n);\r\n\r\n// renderizador\r\nconst renderizador = new THREE.WebGLRenderer({\r\n    antialias: true,\r\n    canvas: document.querySelector('canvas'),\r\n});\r\ndocument.querySelector('#canvasContainer');\r\nrenderizador.autoClear = false;\r\nrenderizador.setSize(innerWidth, innerHeight);\r\nrenderizador.setPixelRatio(window.devicePixelRatio);\r\nrenderizador.toneMapping = THREE.ReinhardToneMapping;\r\nconst renderizarCena = new RenderPass(cena, camera);\r\n\r\n// iluminação\r\nconst luzAmbiente = new THREE.AmbientLight(0xffffff, 0.015);\r\nconst luzDoSol = new THREE.PointLight(0xffffff, 6, 10000);\r\nconst luzDoSolHelper = new THREE.PointLightHelper(luzDoSol, 1);\r\nconst bloomPass = new UnrealBloomPass(\r\n    new THREE.Vector2(innerWidth, innerHeight),\r\n    0.4,\r\n    0,\r\n    0\r\n);\r\nconst compositorDeEfeito = new EffectComposer(renderizador);\r\ncompositorDeEfeito.setSize(innerWidth, innerHeight);\r\ncompositorDeEfeito.addPass(renderizarCena);\r\ncompositorDeEfeito.addPass(bloomPass);\r\n\r\nconst customMaterialAtimosphere = new THREE.ShaderMaterial({\r\n    uniforms: {\r\n        c: { type: 'f', value: 0.5 },\r\n        p: { type: 'f', value: 0.4 },\r\n        vertexShader: document.getElementById('vertexShaderAtmosphere'),\r\n        fragmentShader: document.getElementById('fragmentShaderAtmosphere'),\r\n    },\r\n});\r\nconst atmosphere = new THREE.Mesh(\r\n    new THREE.SphereGeometry(100, 50, 50),\r\n    customMaterialAtimosphere\r\n);\r\natmosphere.scale.x = atmosphere.scale.y = atmosphere.scale.z = 1.2;\r\natmosphere.material.side = THREE.BackSide;\r\n\r\n// planetas\r\nconst sol = new THREE.Mesh(\r\n    new THREE.SphereGeometry(100, 50, 50),\r\n    new THREE.MeshLambertMaterial({\r\n        map: new THREE.TextureLoader().load('./assets/textures/sun.jpg'),\r\n    })\r\n);\r\nconst terra = new THREE.Mesh(\r\n    new THREE.SphereGeometry(5, 50, 50),\r\n    new THREE.MeshLambertMaterial({\r\n        map: new THREE.TextureLoader().load(\r\n            './assets/textures/hd_earth_texture.jpg'\r\n        ),\r\n    })\r\n);\r\n\r\n// estrelas\r\nconst geometriaDaEstrela = new THREE.BufferGeometry();\r\nconst materialDaEstrela = new THREE.PointsMaterial({\r\n    color: 0xffffff,\r\n});\r\nconst verticesDaEstrela = [];\r\nfor (let i = 0; i < 10000; i++) {\r\n    const x = (Math.random() - 0.5) * 60000;\r\n    const y = (Math.random() - 0.5) * 60000;\r\n    const z = (Math.random() - 0.5) * 60000;\r\n    verticesDaEstrela.push(x, y, z);\r\n}\r\ngeometriaDaEstrela.setAttribute(\r\n    'position',\r\n    new THREE.Float32BufferAttribute(verticesDaEstrela, 3)\r\n);\r\nconst estrelas = new THREE.Points(geometriaDaEstrela, materialDaEstrela);\r\n\r\n// controles\r\nconst controles = new OrbitControls(camera, document.querySelector('canvas'));\r\ncontroles.enableDamping = true;\r\ncontroles.dampingFactor = 0.05;\r\n\r\n// redimensionador\r\nwindow.addEventListener('resize', redimensionar, false);\r\nfunction redimensionar() {\r\n    camera.aspect = innerWidth / innerHeight;\r\n    camera.updateProjectionMatrix();\r\n    renderizador.setSize(innerWidth, innerHeight);\r\n    renderizador.render(cena, camera);\r\n}\r\n\r\n// grupos\r\nconst grupoTerra = new THREE.Group();\r\ngrupoTerra.add(terra);\r\n\r\nconst grupoSol = new THREE.Group();\r\ngrupoSol.add(sol);\r\ngrupoSol.add(atmosphere);\r\ngrupoSol.add(luzDoSol);\r\ngrupoSol.add(luzDoSolHelper);\r\n\r\n// adicionando na cena\r\ncena.add(luzAmbiente);\r\ncena.add(estrelas);\r\ncena.add(grupoSol);\r\ncena.add(grupoTerra);\r\n\r\n// posições iniciais\r\ncamera.position.set(0, 0, 400);\r\ngrupoTerra.position.set(200, 0, 0);\r\ngrupoSol.position.set(0, 0, 0);\r\n\r\n// animações\r\nfunction animacao() {\r\n    requestAnimationFrame(animacao);\r\n    grupoTerra.rotation.y += 0.0005;\r\n    grupoSol.rotation.y += 0.0002;\r\n    grupoSol.rotation.x += 0.0002;\r\n    estrelas.rotation.x += 0.000001;\r\n    estrelas.rotation.y += 0.000001;\r\n\r\n    controles.update();\r\n    compositorDeEfeito.render();\r\n}\r\nanimacao();\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../../../Three JS tests/cartoes_interativos/main.js b/../../../Three JS tests/cartoes_interativos/main.js
+--- a/../../../Three JS tests/cartoes_interativos/main.js	(revision 5ff99f6a4665c60eeec7e4631b6fa7c8d47eaa6a)
++++ b/../../../Three JS tests/cartoes_interativos/main.js	(date 1656537004952)
+@@ -2,7 +2,6 @@
+ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+ import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
+ import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
+-import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass.js';
+ import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass.js';
+ 
+ // cena e câmera
+@@ -74,9 +73,7 @@
+ 
+ // estrelas
+ const geometriaDaEstrela = new THREE.BufferGeometry();
+-const materialDaEstrela = new THREE.PointsMaterial({
+-    color: 0xffffff,
+-});
++const materialDaEstrela = new THREE.PointsMaterial({ color: 0xffffff });
+ const verticesDaEstrela = [];
+ for (let i = 0; i < 10000; i++) {
+     const x = (Math.random() - 0.5) * 60000;
+@@ -107,32 +104,56 @@
+ // grupos
+ const grupoTerra = new THREE.Group();
+ grupoTerra.add(terra);
++<<<<<<< HEAD
+ 
+ const grupoSol = new THREE.Group();
++=======
++const grupoSol = new Group();
++>>>>>>> a00f37ddf006560c18a8428646ae5f36d9276dc9
+ grupoSol.add(sol);
+ grupoSol.add(atmosphere);
+ grupoSol.add(luzDoSol);
+ grupoSol.add(luzDoSolHelper);
+ 
++<<<<<<< HEAD
+ // adicionando na cena
+ cena.add(luzAmbiente);
++=======
++// adicionar na cena
++>>>>>>> a00f37ddf006560c18a8428646ae5f36d9276dc9
+ cena.add(estrelas);
+ cena.add(grupoSol);
+ cena.add(grupoTerra);
+ 
+ // posições iniciais
+ camera.position.set(0, 0, 400);
++<<<<<<< HEAD
+ grupoTerra.position.set(200, 0, 0);
+ grupoSol.position.set(0, 0, 0);
++=======
++camera.lookAt(sol);
++grupoSol.position.set(0, 0, 0);
++grupoTerra.position.set(200, 0, 100);
++>>>>>>> a00f37ddf006560c18a8428646ae5f36d9276dc9
+ 
+ // animações
+ function animacao() {
+     requestAnimationFrame(animacao);
++<<<<<<< HEAD
+     grupoTerra.rotation.y += 0.0005;
+     grupoSol.rotation.y += 0.0002;
+     grupoSol.rotation.x += 0.0002;
+     estrelas.rotation.x += 0.000001;
+     estrelas.rotation.y += 0.000001;
++=======
++    estrelas.rotation.x += 0.000005;
++    estrelas.rotation.y += 0.000005;
++>>>>>>> a00f37ddf006560c18a8428646ae5f36d9276dc9
++
++    grupoSol.rotation.y += 0.0002;
++    grupoSol.rotation.x += 0.0002;
++
++    grupoTerra.rotation.y += 0.0005;
+ 
+     controles.update();
+     compositorDeEfeito.render();
