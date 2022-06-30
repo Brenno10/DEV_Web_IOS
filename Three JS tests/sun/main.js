@@ -75,15 +75,6 @@ bloomComposer.addPass(bloomPass);
 controls.enableDamping = true;
 controls.dampingFactor = 0.05;
 
-// configurações de resize
-window.addEventListener('resize', redimensionar, false);
-function redimensionar() {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.render(scene, camera);
-}
-
 //
 // objetos
 
@@ -139,6 +130,18 @@ const stars = new THREE.Mesh(
         transparent: true,
     })
 );
+
+//
+// eventos
+
+// resize
+window.addEventListener('resize', redimensionar, false);
+function redimensionar() {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.render(scene, camera);
+}
 
 //
 // grupos
