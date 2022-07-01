@@ -82,7 +82,7 @@ controls.dampingFactor = 0.05;
 const sun = new THREE.Mesh(
     new THREE.IcosahedronGeometry(139.27, 50, 50),
     new THREE.MeshBasicMaterial({
-        map: new THREE.TextureLoader().load('./assets/textures/sun.jpg'),
+        map: new THREE.TextureLoader().load('./assets/textures/2k/2k_sun.jpg'),
     })
 );
 
@@ -92,7 +92,9 @@ const mercury = new THREE.Mesh(
     new THREE.MeshPhongMaterial({
         roughness: 1,
         metalness: 0,
-        map: new THREE.TextureLoader().load('./assets/textures/8k_mercury.jpg'),
+        map: new THREE.TextureLoader().load(
+            './assets/textures/2k/2k_mercury.jpg'
+        ),
     })
 );
 mercury.receiveShadow = true;
@@ -105,7 +107,7 @@ const venus = new THREE.Mesh(
         roughness: 1,
         metalness: 0,
         map: new THREE.TextureLoader().load(
-            './assets/textures/8k_venus_surface.jpg'
+            './assets/textures/2k/2k_venus_surface.jpg'
         ),
     })
 );
@@ -140,7 +142,7 @@ const moon = new THREE.Mesh(
     new THREE.MeshPhongMaterial({
         roughness: 5,
         metalness: 0,
-        map: new THREE.TextureLoader().load('./assets/textures/8k_moon.jpg'),
+        map: new THREE.TextureLoader().load('./assets/textures/2k/2k_moon.jpg'),
     })
 );
 moon.receiveShadow = true;
@@ -152,7 +154,7 @@ const mars = new THREE.Mesh(
     new THREE.MeshPhongMaterial({
         roughness: 1,
         metalness: 0,
-        map: new THREE.TextureLoader().load('./assets/textures/8k_mars.jpg'),
+        map: new THREE.TextureLoader().load('./assets/textures/2k/2k_mars.jpg'),
     })
 );
 mars.receiveShadow = true;
@@ -164,7 +166,9 @@ const jupiter = new THREE.Mesh(
     new THREE.MeshPhongMaterial({
         roughness: 1,
         metalness: 0,
-        map: new THREE.TextureLoader().load('./assets/textures/8k_jupiter.jpg'),
+        map: new THREE.TextureLoader().load(
+            './assets/textures/2k/2k_jupiter.jpg'
+        ),
     })
 );
 jupiter.receiveShadow = true;
@@ -176,7 +180,9 @@ const saturn = new THREE.Mesh(
     new THREE.MeshPhongMaterial({
         roughness: 1,
         metalness: 0,
-        map: new THREE.TextureLoader().load('./assets/textures/8k_saturn.jpg'),
+        map: new THREE.TextureLoader().load(
+            './assets/textures/2k/2k_saturn.jpg'
+        ),
     })
 );
 saturn.receiveShadow = true;
@@ -188,7 +194,9 @@ const uranus = new THREE.Mesh(
     new THREE.MeshPhongMaterial({
         roughness: 1,
         metalness: 0,
-        map: new THREE.TextureLoader().load('./assets/textures/2k_uranus.jpg'),
+        map: new THREE.TextureLoader().load(
+            './assets/textures/2k/2k_uranus.jpg'
+        ),
     })
 );
 uranus.receiveShadow = true;
@@ -200,7 +208,9 @@ const neptune = new THREE.Mesh(
     new THREE.MeshPhongMaterial({
         roughness: 1,
         metalness: 0,
-        map: new THREE.TextureLoader().load('./assets/textures/2k_neptune.jpg'),
+        map: new THREE.TextureLoader().load(
+            './assets/textures/2k/2k_neptune.jpg'
+        ),
     })
 );
 neptune.receiveShadow = true;
