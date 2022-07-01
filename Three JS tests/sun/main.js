@@ -80,7 +80,7 @@ controls.dampingFactor = 0.05;
 
 // sol
 const sun = new THREE.Mesh(
-    new THREE.IcosahedronGeometry(139.2, 50, 50),
+    new THREE.IcosahedronGeometry(139.27, 50, 50),
     new THREE.MeshBasicMaterial({
         map: new THREE.TextureLoader().load('./assets/textures/sun.jpg'),
     })
@@ -88,7 +88,7 @@ const sun = new THREE.Mesh(
 
 // mercurio
 const mercury = new THREE.Mesh(
-    new THREE.SphereGeometry(0.488, 50, 50),
+    new THREE.SphereGeometry(0.48794, 50, 50),
     new THREE.MeshPhongMaterial({
         roughness: 1,
         metalness: 0,
@@ -148,7 +148,7 @@ moon.castShadow = true;
 
 // marte
 const mars = new THREE.Mesh(
-    new THREE.SphereGeometry(0.678, 50, 50),
+    new THREE.SphereGeometry(0.6779, 50, 50),
     new THREE.MeshPhongMaterial({
         roughness: 1,
         metalness: 0,
@@ -160,7 +160,7 @@ mars.castShadow = true;
 
 // jupiter
 const jupiter = new THREE.Mesh(
-    new THREE.SphereGeometry(12.9822, 50, 50),
+    new THREE.SphereGeometry(13.982, 50, 50),
     new THREE.MeshPhongMaterial({
         roughness: 1,
         metalness: 0,
@@ -172,7 +172,7 @@ jupiter.castShadow = true;
 
 // saturno
 const saturn = new THREE.Mesh(
-    new THREE.SphereGeometry(11.6464, 50, 50),
+    new THREE.SphereGeometry(11.646, 50, 50),
     new THREE.MeshPhongMaterial({
         roughness: 1,
         metalness: 0,
@@ -196,7 +196,7 @@ uranus.castShadow = true;
 
 // netuno
 const neptune = new THREE.Mesh(
-    new THREE.SphereGeometry(4.9248, 50, 50),
+    new THREE.SphereGeometry(4.9244, 50, 50),
     new THREE.MeshPhongMaterial({
         roughness: 1,
         metalness: 0,
