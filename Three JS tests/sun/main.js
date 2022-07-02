@@ -187,6 +187,19 @@ const saturn = new THREE.Mesh(
 );
 saturn.receiveShadow = true;
 saturn.castShadow = true;
+// anéis
+const saturnRings = new THREE.Mesh(
+    new THREE.RingGeometry(11, 50, 50),
+    new THREE.MeshBasicMaterial({
+        map: new THREE.TextureLoader().load(
+            './assets/textures/2k/2k_saturn_ring_alpha.png'
+        ),
+        transparent: true,
+        side: THREE.DoubleSide,
+    })
+);
+saturnRings.receiveShadow = true;
+saturnRings.castShadow = true;
 
 // urano
 const uranus = new THREE.Mesh(
@@ -248,6 +261,10 @@ const earthGroup = new THREE.Group();
 earthGroup.add(earth);
 earthGroup.add(clouds);
 
+const saturnGroup = new THREE.Group();
+saturnGroup.add(saturn);
+saturnGroup.add(saturnRings);
+
 //
 // posições iniciais
 camera.position.set(0, 0, 400); // câmera
@@ -259,7 +276,7 @@ earthGroup.position.set(190, 0, 0);
 moon.position.set(190, 3, 0);
 mars.position.set(200, 0, 0);
 jupiter.position.set(230, 0, 0);
-saturn.position.set(265, 0, 0);
+saturnGroup.position.set(265, 0, 0);
 uranus.position.set(290, 0, 0);
 neptune.position.set(310, 0, 0);
 
@@ -273,12 +290,11 @@ sun.layers.set(1);
 // 0
 mercury.layers.set(0);
 venus.layers.set(0);
-earth.layers.set(0);
-clouds.layers.set(0);
+earthGroup.layers.set(0);
 moon.layers.set(0);
 mars.layers.set(0);
 jupiter.layers.set(0);
-saturn.layers.set(0);
+saturnGroup.layers.set(0);
 uranus.layers.set(0);
 neptune.layers.set(0);
 
@@ -294,7 +310,7 @@ scene.add(earthGroup);
 scene.add(moon);
 scene.add(mars);
 scene.add(jupiter);
-scene.add(saturn);
+scene.add(saturnGroup);
 scene.add(uranus);
 scene.add(neptune);
 
