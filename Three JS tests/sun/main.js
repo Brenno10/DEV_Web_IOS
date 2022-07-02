@@ -189,7 +189,7 @@ saturn.receiveShadow = true;
 saturn.castShadow = true;
 // anéis
 const saturnRings = new THREE.Mesh(
-    new THREE.RingGeometry(11, 50, 50),
+    new THREE.RingBufferGeometry(11, 50, 50),
     new THREE.MeshBasicMaterial({
         map: new THREE.TextureLoader().load(
             './assets/textures/2k/2k_saturn_ring_alpha.png'
