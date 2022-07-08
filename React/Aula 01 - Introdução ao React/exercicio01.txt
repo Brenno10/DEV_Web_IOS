@@ -1,0 +1,21 @@
+1. O que é React:
+Uma biblioteca javaScript para criação de sites
+https://pt-br.reactjs.org/
+
+2. Diferença entre biblioteca e framework:
+Framework é uma estrutura base para a criação de software
+
+Biblioteca é uma coleção de códigos voltados um determinado tipo de problema. (Um exemplo seria a biblioteca Three js,
+que é voltada a animações 3D e criação de jogos em javaScript)
+https://www.treinaweb.com.br/blog/qual-a-diferenca-entre-framework-e-biblioteca
+
+3. O que são props:
+São argumentos passados para componentes do react por atributos HTML. (props é de propriedades)
+https://www.w3schools.com/react/react_props.asp
+
+4. O que são hooks:
+São funções do react que permitem interferir com o comportamento de outros componentes
+https://dev.to/akshaypalekar15/how-react-hooks-work-in-simple-words-4d4d
+
+5. O que são componentes:
+São as partes do site em arquivos .jsx
