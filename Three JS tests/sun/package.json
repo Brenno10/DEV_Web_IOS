@@ -11,6 +11,7 @@
     "vite": "^2.9.13"
   },
   "dependencies": {
+    "@danielblagy/three-mmi": "^1.0.0",
     "three": "^0.142.0"
   }
 }
